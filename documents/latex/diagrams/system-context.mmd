@@ -1,0 +1,6 @@
+%% System context — render with Mermaid, export PNG to diagrams/ for Word builds.
+flowchart LR
+    User([User browser]) --> Next["Next.js static route /<br/>layout + page + CodeEditor chrome"]
+    User --> OC["OneCompiler embed (iframe)<br/>editor + runner"]
+    Next -. "no user code<br/>touches server" .-> Server[(No CodeLab backend)]
+    OC -- "executes user code<br/>third-party" --> OC

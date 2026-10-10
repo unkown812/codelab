@@ -1,0 +1,30 @@
+\section{Configuration}
+\label{sec:configuration}
+
+\textbf{Status:} IMPLEMENTED.
+
+\begin{table}[H]
+\centering
+\caption{Configuration files and their role}
+\begin{tabular}{|l|p{8.5cm}|}
+\hline
+\textbf{File} & \textbf{Role} \\ \hline
+\texttt{codelab/next.config.ts} & Enables \texttt{cacheComponents} and partial prefetching; Turbopack rule routing \texttt{*.css} through \texttt{@tailwindcss/turbopack} \\ \hline
+\texttt{codelab/tsconfig.json} & Strict TS, \texttt{ES2017} target, bundler resolution, \texttt{@/*} $\rightarrow$ \texttt{./src/*} alias (used by \texttt{page.tsx} import) \\ \hline
+\texttt{codelab/eslint.config.mjs} & Flat config extending \texttt{core-web-vitals} + TypeScript presets; ignores build outputs \\ \hline
+\texttt{codelab/.gitignore} & Ignores \texttt{node\_modules}, \texttt{.next}, \texttt{out}, \texttt{build}, \texttt{.env*}, Vercel metadata \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Environment variables}
+None are read or required. \textbf{Status:} NOT APPLICABLE. The table below records the empty set explicitly so Word readers are not left guessing.
+
+\begin{table}[H]
+\centering
+\caption{Environment variables}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Variable} & \textbf{Required} & \textbf{Used by} & \textbf{Sensitive} \\ \hline
+(none) & --- & --- & --- \\ \hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,23 @@
+\section{Integrations}
+\label{sec:integrations}
+
+\textbf{Status:} IMPLEMENTED (one integration).
+
+\subsection{OneCompiler embed}
+\begin{table}[H]
+\centering
+\caption{OneCompiler integration fact sheet}
+\begin{tabular}{|l|p{8.5cm}|}
+\hline
+\textbf{Item} & \textbf{Detail} \\ \hline
+Type & Third-party iframe embed; editor and code runner hosted by OneCompiler \\ \hline
+Base URL & \texttt{https://onecompiler.com/embed} (\texttt{EMBED\_BASE} in \texttt{CodeEditor.tsx}) \\ \hline
+DOM contract & \texttt{iframe\#onecompiler}, \texttt{title="Online Code Compiler"}, \texttt{loading="lazy"}, \texttt{allow="clipboard-read; clipboard-write"} \\ \hline
+Configuration surface & Path (\texttt{language}, \texttt{codeId}) + query flags (Section~\ref{sec:functional-requirements}, FR-04--FR-08) \\ \hline
+Programmatic API & Only intent flags today: \texttt{codeChangeEvent} (embed posts code changes) and \texttt{listenToEvents} (embed accepts incoming messages). No \texttt{window.onmessage} receiver and no \texttt{postMessage} sender exist in this repo. \\ \hline
+Docs reference & \url{https://onecompiler.com/apis/embed-editor} (public embed options) \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Resilience notes}
+If \texttt{onecompiler.com} is unreachable, the CodeLab chrome still renders with an empty editor area; no fallback message or retry exists. \textbf{Status:} IMPLEMENTED (behavior) / RECOMMENDED (fallback UI, see Section~\ref{sec:roadmap}). No other integrations (analytics, auth providers, storage, email) exist. \textbf{Status:} NOT APPLICABLE.

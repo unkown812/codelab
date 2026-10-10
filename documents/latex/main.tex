@@ -1,0 +1,66 @@
+\documentclass[11pt,a4paper]{article}
+
+\input{preamble}
+\input{metadata}
+
+\begin{document}
+
+% ---------------- Cover page ----------------
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\LARGE\bfseries \DocProject\par}
+\vspace{0.4cm}
+{\large \DocSubtitle\par}
+\vspace{0.6cm}
+{\Large \DocTitle\par}
+\vspace{0.8cm}
+\begin{tabular}{rl}
+Version: & \DocVersion \\
+Date: & \DocDate \\
+Author: & \DocAuthor \\
+Stack: & \parbox[t]{9cm}{\DocStack} \\
+\end{tabular}
+\vfill
+\begin{tabular}{|p{14cm}|}
+\hline
+\textbf{Confidentiality:} This document is generated strictly from the repository listed below.
+No customers, metrics, APIs, or features outside the repository are claimed. \\
+Repository: \DocRepo \\
+\hline
+\end{tabular}
+\vspace{1cm}
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\clearpage
+\pagenumbering{arabic}
+
+% ---------------- Sections ----------------
+\input{sections/executive-summary}
+\input{sections/project-overview}
+\input{sections/project-description}
+\input{sections/prd}
+\input{sections/functional-requirements}
+\input{sections/non-functional-requirements}
+\input{sections/technical-requirements}
+\input{sections/software-architecture}
+\input{sections/frontend-architecture}
+\input{sections/integrations}
+\input{sections/configuration}
+\input{sections/ui-ux}
+\input{sections/design-system}
+\input{sections/security}
+\input{sections/performance}
+\input{sections/testing}
+\input{sections/deployment}
+\input{sections/seo}
+\input{sections/known-issues}
+\input{sections/technical-debt}
+\input{sections/roadmap}
+\input{sections/development-guidelines}
+\input{sections/glossary}
+
+\end{document}

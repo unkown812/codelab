@@ -1,0 +1,19 @@
+\section{Deployment}
+\label{sec:deployment}
+
+\textbf{Status:} IMPLEMENTED for local commands; INFERRED for hosting (no hosting config in repo).
+
+\subsection{Prerequisites}
+Node.js with npm (versions not pinned in repo --- RECOMMENDED: pin in \texttt{.nvmrc} or \texttt{packageManager} field). Install from \texttt{codelab/}:
+
+\begin{lstlisting}[language=bash,caption={Verified commands (from package.json scripts)}]
+cd codelab
+npm install
+npm run dev    # local development
+npm run lint   # quality gate
+npm run build  # production build + type check
+npm start      # serve the production build
+\end{lstlisting}
+
+\subsection{Build and hosting}
+\texttt{next build} statically prerenders \texttt{/} (verified 2026-10-10 output: ``Static prerendered as static content''). No Dockerfile, CI workflow, or platform manifest exists, so any host (Vercel, Netlify, self-hosted Node, static export) is an operator choice, not a repository fact. No database migrations, rollback scripts, or production env configuration exist. \textbf{Status:} NOT APPLICABLE.

@@ -1,0 +1,37 @@
+\section{Technical Requirements}
+\label{sec:technical-requirements}
+
+\textbf{Status:} IMPLEMENTED (toolchain table verified against manifests on 2026-10-10).
+
+\begin{table}[H]
+\centering
+\caption{Technology stack (actual versions)}
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{Category} & \textbf{Technology} & \textbf{Evidence} \\ \hline
+Framework & Next.js 16.4.0 (App Router) & \texttt{codelab/package.json}; \texttt{next.config.ts} enables \texttt{cacheComponents}, partial prefetching \\ \hline
+UI runtime & React 19.3.0, react-dom 19.3.0 & \texttt{codelab/package.json} \\ \hline
+Language & TypeScript 5, strict mode & \texttt{tsconfig.json} (\texttt{strict:true}, \texttt{jsx:react-jsx}, path alias \texttt{@/*}) \\ \hline
+Styling & Tailwind CSS 4 via \texttt{@tailwindcss/turbopack} & \texttt{package.json} devDependencies; \texttt{globals.css} \texttt{@import "tailwindcss"} \\ \hline
+Fonts & Geist + Geist Mono via \texttt{next/font} & \texttt{layout.tsx} \\ \hline
+Lint & ESLint 9 + \texttt{eslint-config-next} & \texttt{eslint.config.mjs}, script \texttt{npm run lint} \\ \hline
+Runtime embed & OneCompiler iframe embed & \texttt{CodeEditor.tsx} \texttt{EMBED\_BASE} \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Explicitly absent}
+\begin{table}[H]
+\centering
+\caption{Technologies not present (verified by file search)}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Area} & \textbf{Status} \\ \hline
+Backend / API routes & NOT APPLICABLE --- no \texttt{route.ts}, no server actions \\ \hline
+Database / ORM / migrations & NOT APPLICABLE \\ \hline
+Authentication / sessions & NOT APPLICABLE \\ \hline
+State management library & NOT APPLICABLE (props only) \\ \hline
+Test runner & NOT APPLICABLE (no test files, scripts, or config) \\ \hline
+CI/CD, Docker, IaC & NOT APPLICABLE \\ \hline
+Env configuration & NOT APPLICABLE (no \texttt{.env*} files; \texttt{.gitignore} merely ignores them) \\ \hline
+\end{tabular}
+\end{table}

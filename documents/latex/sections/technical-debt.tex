@@ -1,0 +1,19 @@
+\section{Technical Debt}
+\label{sec:technical-debt}
+
+\textbf{Status:} IMPLEMENTED observations; priority is the author's judgment (marked).
+
+\begin{table}[H]
+\centering
+\caption{Technical debt register}
+\begin{tabular}{|p{3cm}|l|p{6.8cm}|}
+\hline
+\textbf{Item} & \textbf{Priority} & \textbf{Detail} \\ \hline
+Untested URL builder & High & \texttt{buildOneCompilerSrc} is the only logic in the app and has no tests. Pay down with unit tests (Section~\ref{sec:testing}). \\ \hline
+Default mismatch (Sec.~\ref{sec:known-issues}) & High & Same fix as above; decide the canonical defaults once. \\ \hline
+Dead template code & Low & \texttt{globals.css} variables, unused \texttt{public} SVGs. \\ \hline
+Prototype drift & Medium & \texttt{index.html} (563 lines, marketing sections) and the app diverged; keep the file as reference or archive it so future readers are not misled. \\ \hline
+No pinning of embed contract & Medium & Embed URL schema is assumed from public docs; no version pin or smoke test. \\ \hline
+Missing headers/CSP & Low & No security-header configuration (Section~\ref{sec:security}). \\ \hline
+\end{tabular}
+\end{table}

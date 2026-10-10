@@ -1,0 +1,22 @@
+\section{SEO}
+\label{sec:seo}
+
+\textbf{Status:} IMPLEMENTED (current) / RECOMMENDED (improvements). AEO and GEO have no dedicated implementation and are NOT APPLICABLE beyond the general semantic-HTML notes below.
+
+\subsection{Current implementation}
+\begin{table}[H]
+\centering
+\caption{SEO signals present in the repo}
+\begin{tabular}{|l|p{8.5cm}|}
+\hline
+\textbf{Signal} & \textbf{Evidence} \\ \hline
+Title + description & \texttt{layout.tsx} metadata: ``CodeLab --- Online Compiler'' / ``Write, compile and run code online with CodeLab.'' \\ \hline
+Language + favicon & \texttt{<html lang="en">}, \texttt{icons.icon=/favicon.ico} \\ \hline
+Semantic landmark & \texttt{section\#compiler} with \texttt{aria-label}, iframe \texttt{title} \\ \hline
+\end{tabular}
+\end{table}
+
+Missing (verified absent): sitemap, \texttt{robots.txt}, canonical URLs, Open Graph/Twitter cards, JSON-LD structured data, and indexable content beyond the chrome (the editor lives in a cross-origin iframe and contributes no crawlable text). The prototype \texttt{index.html} had richer marketing copy (hero/features) that was not carried into the app.
+
+\subsection{Recommended improvements (RECOMMENDED)}
+Add OG/Twitter meta, a \texttt{robots.txt} + sitemap for the single route, canonical URL once a domain is chosen, and---if search traffic matters---a server-rendered content section describing supported languages, because the current route offers crawlers almost no text.

@@ -1,0 +1,19 @@
+\section{Development Guidelines}
+\label{sec:development-guidelines}
+
+\textbf{Status:} IMPLEMENTED (workflow as configured) + RECOMMENDED (conventions to adopt). This section doubles as the contribution guide; no separate CONTRIBUTING file exists in the repo.
+
+\subsection{Setup and commands}
+Work from \texttt{codelab/}. Path alias \texttt{@/*} maps to \texttt{./src/*} (\texttt{tsconfig.json}); \texttt{page.tsx} already uses \texttt{@/components/CodeEditor}. Run \texttt{npm run lint} and \texttt{npm run build} before opening a change; both must pass.
+
+\subsection{Conventions}
+\begin{itemize}
+\item Keep \texttt{CodeEditor} presentational: props in, iframe \texttt{src} out; no client state unless a \texttt{postMessage} bridge is explicitly designed and documented.
+\item Keep the embed builder as the single place that knows the OneCompiler URL schema; never hand-concatenate embed URLs elsewhere.
+\item Preserve the full-bleed contract: no page-level margins, paddings, or max-width wrappers around the editor without updating Sections~\ref{sec:ui-ux} and~\ref{sec:design-system}.
+\item Prefer Tailwind utilities over new CSS files; the prototype \texttt{index.html} is reference-only---do not reintroduce its global reset into the app.
+\item Do not add backend, auth, or tracking without a matching documentation update and security review.
+\end{itemize}
+
+\subsection{Definition of done}
+Build + lint green, viewport-gap check at 360/768/1440px, embed loads with network access, no secrets added, and any prop/flag change reflected in Section~\ref{sec:functional-requirements} and the component docblock.

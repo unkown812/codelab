@@ -1,0 +1,29 @@
+\section{Frontend Architecture}
+\label{sec:frontend-architecture}
+
+\textbf{Status:} IMPLEMENTED.
+
+\subsection{Route tree}
+One route: \texttt{/} (\texttt{src/app/page.tsx}). No nested layouts, loading states, error boundaries, or not-found customization beyond the framework default. The App Router \texttt{LayoutProps<"/">} typing in \texttt{layout.tsx} reflects Next.js 16 conventions.
+
+\subsection{Component catalogue}
+\begin{table}[H]
+\centering
+\caption{Components (exhaustive)}
+\begin{tabular}{|l|p{8.5cm}|}
+\hline
+\textbf{Component} & \textbf{Responsibility} \\ \hline
+\texttt{RootLayout} (\texttt{layout.tsx}) & html lang, Geist font variables, \texttt{metadata} (title, description, favicon), full-viewport flex body \\ \hline
+\texttt{Home} (\texttt{page.tsx}) & Full-height background container (\texttt{bg-[\#070b12]}) rendering one \texttt{CodeEditor} \\ \hline
+\texttt{CodeEditor} (\texttt{components/CodeEditor.tsx}) & Window header (dots, title, status) + responsive iframe body; URL builder \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Props contract}
+\texttt{CodeEditorProps} exposes \texttt{title}, \texttt{statusText}, \texttt{id}, \texttt{className}, \texttt{src}, \texttt{language}, \texttt{codeId}, \texttt{theme}, \texttt{fontSize}, and 12 embed flags. Defaults reproduce the legacy prototype URL (\texttt{theme=dark}, \texttt{hideTitle}, \texttt{codeChangeEvent}). Note an inconsistency documented in Section~\ref{sec:known-issues}: \texttt{buildOneCompilerSrc} defaults \texttt{availableLanguages} and \texttt{listenToEvents} to \texttt{true} while the component defaults them to \texttt{false}, so direct helper calls and default component renders produce different query strings.
+
+\subsection{Styling approach}
+Utility-first Tailwind classes co-located with markup; no CSS modules, no design-token layer. Arbitrary values (\texttt{bg-[\#0f172a]}, \texttt{h-dvh}, \texttt{max-sm:hidden}) carry the visual system. \texttt{globals.css} still ships the \texttt{create-next-app} light/dark template variables, which are inert because page-level classes override the body background.
+
+\subsection{State and data fetching}
+None. \textbf{Status:} NOT APPLICABLE (no hooks, no context, no fetch, no cache configuration beyond framework defaults in \texttt{next.config.ts}).

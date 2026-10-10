@@ -1,0 +1,36 @@
+\section{Project Overview}
+\label{sec:project-overview}
+
+\textbf{Status:} IMPLEMENTED.
+
+\subsection{Identity}
+\begin{table}[H]
+\centering
+\caption{Project identity (evidence-based)}
+\begin{tabular}{|l|p{9cm}|}
+\hline
+\textbf{Item} & \textbf{Value} \\ \hline
+Name & CodeLab \\ \hline
+Subtitle & Online Compiler \\ \hline
+Repository layout & Root static prototype \texttt{index.html} + Next.js app in \texttt{codelab/} \\ \hline
+App package & \texttt{codelab}, version \texttt{0.1.0}, private, \texttt{codelab/package.json} \\ \hline
+Entry route & \texttt{/} from \texttt{codelab/src/app/page.tsx} \\ \hline
+Document title & ``CodeLab --- Online Compiler'' in \texttt{codelab/src/app/layout.tsx} \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Repository inventory}
+The complete application source (excluding \texttt{node\_modules/}, \texttt{.next/}, \texttt{.git/}) is:
+
+\begin{itemize}
+\item \texttt{index.html} --- 563-line standalone prototype with inline CSS; contains navbar/hero/features styles but its \texttt{body} renders only the compiler section (lines 516--557).
+\item \texttt{codelab/src/app/layout.tsx} --- root layout, Geist fonts, metadata, full-viewport body.
+\item \texttt{codelab/src/app/page.tsx} --- home route, renders \texttt{CodeEditor} only.
+\item \texttt{codelab/src/app/globals.css} --- Tailwind import plus default template variables.
+\item \texttt{codelab/src/components/CodeEditor.tsx} --- 185-line reusable embed component plus \texttt{buildOneCompilerSrc} URL builder.
+\item \texttt{codelab/package.json}, \texttt{next.config.ts}, \texttt{tsconfig.json}, \texttt{eslint.config.mjs}, \texttt{.gitignore} --- toolchain configuration.
+\item \texttt{codelab/public/} --- default Next.js static assets (\texttt{next.svg}, \texttt{vercel.svg}, favicons); none are referenced by \texttt{page.tsx}. \textbf{Status:} IMPLEMENTED (unused assets, see Section~\ref{sec:technical-debt}).
+\end{itemize}
+
+\subsection{Explicit non-goals (not in repository)}
+No backend, database, migrations, API endpoints, authentication, authorization, middleware, background jobs, webhooks, storage, analytics, tests, or deployment manifests exist. These areas are documented as NOT APPLICABLE in their respective sections rather than omitted silently.

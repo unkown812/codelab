@@ -1,0 +1,10 @@
+\section{Performance and Scalability}
+\label{sec:performance}
+
+\textbf{Status:} INFERRED (no measurements, budgets, or load tests exist in the repository).
+
+\subsection{Performance}
+The page ships a static route plus React runtime plus one lazily-loaded third-party iframe. Expected cost centers: (1) Next.js JS bundle, (2) Geist font loading, (3) OneCompiler app inside the iframe, which dominates interactive readiness. Implemented mitigations: static prerendering, \texttt{loading="lazy"} on the iframe, no images or client JS of our own. Not implemented: bundle analysis, \texttt{next/image} usage (irrelevant---no images rendered), or Web Vitals reporting.
+
+\subsection{Scalability}
+CodeLab-side scaling is trivially horizontal: the route is static with no session state, so any static host or CDN can serve it. Effective scalability is bounded by OneCompiler's availability and rate limits, which are outside this repository. No caching, queueing, or database scaling considerations apply. \textbf{Status:} NOT APPLICABLE beyond CDN static hosting.

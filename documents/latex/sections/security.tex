@@ -1,0 +1,20 @@
+\section{Security}
+\label{sec:security}
+
+\textbf{Status:} findings are IMPLEMENTED observations; recommendations are marked RECOMMENDED.
+
+\begin{table}[H]
+\centering
+\caption{Security review (evidence-based)}
+\begin{tabular}{|p{2.6cm}|l|p{7.5cm}|}
+\hline
+\textbf{Finding} & \textbf{Severity} & \textbf{Evidence, impact, recommendation} \\ \hline
+No secrets in repo & Informational & No \texttt{.env} files, tokens, or keys found. Impact: none. Recommendation: keep it so; add secret scanning if a backend is ever added. \\ \hline
+Cross-origin iframe & Medium & \texttt{iframe} loads full OneCompiler app. Impact: CodeLab inherits the embed's XSS/sandbox posture; CodeLab cannot audit remote JS. Recommendation (RECOMMENDED): add \texttt{sandbox} allow-list review and a content-security-policy frame-src pin in future hosting config. \\ \hline
+Clipboard permissions & Low & \texttt{allow="clipboard-read; clipboard-write"}. Impact: editor copy/paste works; a compromised embed could read clipboard on user gesture. Recommendation: keep only if needed; document the trade-off. \\ \hline
+No input validation surface & Low & CodeLab takes no user input itself (only props). Impact: injection risk is confined to \texttt{language}/\texttt{codeId} interpolation, which strips slashes. Recommendation: retain the sanitization; add unit tests for the builder. \\ \hline
+Missing security headers & Low & No \texttt{headers()} config in \texttt{next.config.ts}. Impact: hosting defaults apply. Recommendation (RECOMMENDED): set \texttt{frame-ancestors}, \texttt{X-Content-Type-Options} at deploy time. \\ \hline
+\end{tabular}
+\end{table}
+
+Authentication, authorization, RLS, encryption, upload handling, and audit logging are NOT APPLICABLE: the features do not exist.

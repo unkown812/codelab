@@ -1,0 +1,34 @@
+\section{Product Description}
+\label{sec:project-description}
+
+\textbf{Status:} IMPLEMENTED for features; INFERRED where user value is interpreted (marked).
+
+\subsection{Product identity}
+CodeLab is a thin full-viewport wrapper around the OneCompiler editor embed. Product category: online code playground / compiler front end. \textbf{Status:} IMPLEMENTED.
+
+\subsection{Problem and solution}
+Problem (INFERRED): users who want to try or share code without installing toolchains need an instantly available editor. Solution (IMPLEMENTED): a single route that fills the viewport with the OneCompiler iframe, framed by a minimal dark window chrome (traffic-light dots, title, static status indicator).
+
+\subsection{Target audience and personas}
+No personas are defined in the repository. \textbf{Status:} UNKNOWN. Plausible audiences (INFERRED, not claimed as requirements): students trying small snippets, interviewers sharing a runnable page, documentation authors linking a live editor. These are listed as hypotheses only.
+
+\subsection{Features (implemented)}
+\begin{table}[H]
+\centering
+\caption{Implemented features with evidence}
+\begin{tabular}{|p{4cm}|p{8.5cm}|}
+\hline
+\textbf{Feature} & \textbf{Evidence} \\ \hline
+Full-viewport editor & \texttt{CodeEditor.tsx} section \texttt{h-dvh w-full flex-col}; \texttt{page.tsx} and \texttt{layout.tsx} bodies use \texttt{h-dvh overflow-hidden} \\ \hline
+OneCompiler embed & \texttt{iframe\#onecompiler}, \texttt{allow="clipboard-read; clipboard-write"} \\ \hline
+Configurable embed URL & \texttt{buildOneCompilerSrc} supports \texttt{language}, \texttt{codeId}, \texttt{theme}, \texttt{fontSize}, 12 boolean flags, plus full \texttt{src} override \\ \hline
+Dark window chrome & Tailwind classes \texttt{bg-[\#0f172a]}, \texttt{bg-[\#070b12]}, status dot \texttt{bg-green-500} \\ \hline
+Responsive header & Status cluster hidden on small screens (\texttt{max-sm:hidden}), reduced header padding \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Non-features}
+User accounts, saved sessions, multi-file projects owned by CodeLab, theming beyond the embed \texttt{theme}/\texttt{fontSize} parameters, and offline execution do not exist in the repository. \textbf{Status:} NOT APPLICABLE (not implemented).
+
+\subsection{Visual identity and SEO keywords}
+Visual identity is dark navy (\texttt{\#070b12} page, \texttt{\#0f172a} editor) with indigo/cyan accents inherited from the prototype. Metadata title ``CodeLab --- Online Compiler'' and description ``Write, compile and run code online with CodeLab.'' are the only SEO signals. \textbf{Status:} IMPLEMENTED. See Section~\ref{sec:seo}.

@@ -1,0 +1,6 @@
+%% User flow — render with Mermaid, export PNG to diagrams/ for Word builds.
+flowchart TD
+    A["Open /"] --> B["See full-viewport<br/>editor window"]
+    B --> C["Type code<br/>(inside OneCompiler iframe)"]
+    C --> D["Run (OneCompiler UI)"]
+    D --> E["See output<br/>(inside iframe)"]

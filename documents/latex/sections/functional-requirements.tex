@@ -1,0 +1,25 @@
+\section{Functional Requirements}
+\label{sec:functional-requirements}
+
+\textbf{Status:} IMPLEMENTED unless marked otherwise. IDs are documentation-only (no tracker exists in the repo).
+
+\begin{table}[H]
+\centering
+\caption{Functional requirements traceable to code}
+\begin{tabular}{|l|p{6cm}|p{5.5cm}|}
+\hline
+\textbf{ID} & \textbf{Requirement} & \textbf{Evidence} \\ \hline
+FR-01 & Render a full-viewport compiler window on \texttt{/} & \texttt{page.tsx} renders \texttt{CodeEditor} inside \texttt{h-dvh overflow-hidden} containers \\ \hline
+FR-02 & Embed the OneCompiler editor via iframe & \texttt{CodeEditor.tsx} lines 174--181, \texttt{iframe\#onecompiler} \\ \hline
+FR-03 & Default embed hides the remote title and enables code-change events & Defaults \texttt{hideTitle=true}, \texttt{codeChangeEvent=true} \\ \hline
+FR-04 & Allow language pre-selection via URL path & \texttt{language} prop $\rightarrow$ \texttt{/embed/\{language\}} \\ \hline
+FR-05 & Allow preloading saved code via code id & \texttt{codeId} prop $\rightarrow$ \texttt{/embed/\{language\}/\{codeId\}} \\ \hline
+FR-06 & Allow editor theme and font-size selection & \texttt{theme}, \texttt{fontSize} (clamped 8--32 in \texttt{clampFontSize}) \\ \hline
+FR-07 & Allow hiding editor chrome elements & Flags \texttt{hideNew}, \texttt{hideRun}, \texttt{hideStdin}, \texttt{hideResult}, etc. \\ \hline
+FR-08 & Allow full URL override & \texttt{src} prop bypasses the builder \\ \hline
+FR-09 & Display static window title and status & \texttt{title} default ``Code Lab Compiler'', \texttt{statusText} default ``Ready to compile'' \\ \hline
+FR-10 & Hide status cluster on narrow screens & \texttt{max-sm:hidden} on status container \\ \hline
+\end{tabular}
+\end{table}
+
+Out of scope: code persistence, user-triggered run from CodeLab chrome (the component only forwards \texttt{listenToEvents} intent to the embed; no \texttt{postMessage} sender exists in the repo), and any server-side compilation. \textbf{Status:} NOT APPLICABLE.

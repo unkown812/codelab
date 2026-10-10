@@ -1,0 +1,8 @@
+%% Component / data flow — render with Mermaid, export PNG to diagrams/ for Word builds.
+flowchart TD
+    P["page.tsx<br/>Home"] --> C["CodeEditor<br/>props"]
+    C --> B["buildOneCompilerSrc()<br/>language, codeId, theme,<br/>fontSize, 12 flags"]
+    B --> URL["embed URL string"]
+    S["src prop (optional override)"] -. "bypasses builder" .-> URL
+    URL --> IF["iframe#onecompiler"]
+    C --> HD["header chrome<br/>title + status (static)"]

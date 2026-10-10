@@ -1,0 +1,18 @@
+\section{Known Issues}
+\label{sec:known-issues}
+
+\textbf{Status:} IMPLEMENTED observations (verified in code on 2026-10-10).
+
+\begin{table}[H]
+\centering
+\caption{Verified issues}
+\begin{tabular}{|p{2.8cm}|l|p{7cm}|}
+\hline
+\textbf{Issue} & \textbf{Severity} & \textbf{Location, impact, recommendation} \\ \hline
+Helper/component default mismatch & Medium & \texttt{CodeEditor.tsx}: \texttt{buildOneCompilerSrc} defaults \texttt{availableLanguages=true}, \texttt{listenToEvents=true}; the component defaults both to \texttt{false}. Impact: documentation examples calling the helper directly produce a different URL than a default render. Recommendation: align the defaults and add unit tests. \\ \hline
+Static status text & Low & \texttt{statusText="Ready to compile"} never changes. Impact: implies liveness the page does not have. Recommendation: drive from embed events or relabel as static chrome. \\ \hline
+Misplaced \texttt{<link>} in layout & Low & \texttt{layout.tsx} renders \texttt{<link rel="shortcut icon">} inside the component body rather than via metadata only. Impact: works but is non-idiomatic and duplicates \texttt{icons.icon}. Recommendation: remove the manual tag. \\ \hline
+Unused template styling/assets & Low & \texttt{globals.css} light/dark template variables and \texttt{public/*.svg} are unreferenced. Impact: dead weight, minor confusion. Recommendation: prune or adopt. \\ \hline
+No embed fallback & Medium & No error UI when \texttt{onecompiler.com} is unreachable. Impact: blank editor area. Recommendation: detect iframe failure and show guidance. \\ \hline
+\end{tabular}
+\end{table}

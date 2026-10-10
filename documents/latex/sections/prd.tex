@@ -1,0 +1,24 @@
+\section{Product Requirements Document (PRD)}
+\label{sec:prd}
+
+\textbf{Status:} INFERRED from implementation (no PRD exists in the repository). Nothing below should be read as a historical requirement; it reconstructs what the code actually satisfies.
+
+\subsection{Vision and goals}
+Vision (INFERRED): the fastest path from link to runnable code in a browser. Goals satisfied by the code: (1) one route, no navigation; (2) editor visible without scrolling on desktop and mobile viewports; (3) zero CodeLab-side code execution to operate.
+
+\subsection{Personas and user stories}
+No personas or stories exist in the repo. \textbf{Status:} UNKNOWN. Reconstructed stories (INFERRED): as a visitor, I can open \texttt{/} and immediately type and run code (via OneCompiler); as an embedder, I can pass \texttt{language}/\texttt{fontSize}/hide-flags to tailor the iframe per page.
+
+\subsection{Scope}
+In scope (IMPLEMENTED): full-viewport layout, dark chrome, configurable embed URL, clipboard permissions for the iframe, lazy iframe loading. Out of scope (NOT APPLICABLE): accounts, persistence, collaboration, grading, plagiarism detection, admin tooling.
+
+\subsection{Acceptance criteria (verifiable)}
+\begin{enumerate}
+\item \texttt{npm run build} succeeds (verified 2026-10-10). \textbf{Status:} IMPLEMENTED.
+\item \texttt{/} renders exactly one \texttt{section\#compiler} containing one \texttt{iframe\#onecompiler}. \textbf{Status:} IMPLEMENTED.
+\item No horizontal or vertical gap exists between component and viewport at 360px, 768px, and 1440px widths (visual check recommended; layout classes assert it). \textbf{Status:} IMPLEMENTED (code) / RECOMMENDED (manual visual sign-off).
+\item With network access to \texttt{onecompiler.com}, the iframe loads the editor; without it, the page frame still renders. \textbf{Status:} INFERRED (third-party behavior, not mocked in repo).
+\end{enumerate}
+
+\subsection{Constraints, dependencies, risks}
+Constraint: all execution capability is delegated to OneCompiler; CodeLab cannot fix editor bugs or guarantee language availability. Dependency: public internet + \texttt{onecompiler.com} availability. Risk: embed policy or URL-schema changes break the page without a CodeLab code change. Mitigation (RECOMMENDED): pin and document a known-good embed URL and add a smoke check (see Section~\ref{sec:roadmap}).

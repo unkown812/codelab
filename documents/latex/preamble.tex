@@ -1,0 +1,53 @@
+% CodeLab documentation preamble.
+% Kept to widely-supported packages so the sources compile with
+% pdfLaTeX and convert cleanly with Pandoc to DOCX.
+\usepackage[a4paper,margin=2.4cm,headheight=14pt]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+
+\definecolor{codelabprimary}{HTML}{6366F1}
+\definecolor{codelabaccent}{HTML}{06B6D4}
+\definecolor{codelabdark}{HTML}{070B12}
+\definecolor{codelabcode}{HTML}{0F172A}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=2pt}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{gray!60},
+  backgroundcolor=\color{gray!6},
+  commentstyle=\color{gray!80}\itshape,
+  keywordstyle=\color{codelabprimary}\bfseries,
+  stringstyle=\color{teal!70!black},
+  upquote=true,
+  tabsize=2
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small CodeLab --- Online Compiler}
+\fancyhead[R]{\small Software Documentation}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}

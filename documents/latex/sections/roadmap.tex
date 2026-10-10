@@ -1,0 +1,20 @@
+\section{Roadmap}
+\label{sec:roadmap}
+
+\textbf{Status:} all items RECOMMENDED or POTENTIAL unless marked EXISTING. Nothing below is a committed plan (no tracker exists in the repo).
+
+\subsection{Existing (EXISTING)}
+Full-viewport embed, configurable OneCompiler URL builder, dark chrome, responsive header, lint + type-check gates.
+
+\subsection{Recommended next (RECOMMENDED)}
+\begin{enumerate}
+\item Align \texttt{buildOneCompilerSrc} and component defaults; add unit + render tests.
+\item Add an embed-failure fallback message with retry guidance.
+\item Remove the manual favicon \texttt{<link>} and prune unused template CSS/assets.
+\item Pin a known-good embed URL in documentation and add a periodic smoke check against \url{https://onecompiler.com/apis/embed-editor}.
+\item Add OG/Twitter meta, \texttt{robots.txt}, and sitemap if search presence is desired.
+\item Pin Node/npm versions and document them.
+\end{enumerate}
+
+\subsection{Potential future work (POTENTIAL)}
+Optional, only if product direction demands: language presets UI, \texttt{postMessage} bridge exposing code-change/run events to CodeLab chrome, multi-tab editors, shareable links encoding \texttt{language}/\texttt{codeId}, and a self-hosted editor to remove the third-party runtime dependency. Each would require new architecture, security, and testing documentation.

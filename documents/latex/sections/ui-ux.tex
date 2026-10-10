@@ -1,0 +1,16 @@
+\section{UI/UX}
+\label{sec:ui-ux}
+
+\textbf{Status:} IMPLEMENTED.
+
+\subsection{Screens}
+Exactly one screen: the editor window on \texttt{/}. There is no navigation, footer, dialog, or form owned by CodeLab. The prototype \texttt{index.html} styled a navbar, hero, badge, features grid, and footer, but none of those elements are rendered by the Next.js app; they are historical context only.
+
+\subsection{Layout and responsive behavior}
+The section is a vertical flex column at \texttt{h-dvh}: a shrink-wrapped header plus a \texttt{flex-1 min-h-0} iframe region. On viewports under 640px the status cluster disappears (\texttt{max-sm:hidden}) and header padding shrinks, preserving editor height. The iframe fills remaining space at all widths; no max-width container constrains it (the prototype's \texttt{min(1400px, ...)} shell was removed when the component was fitted to the viewport).
+
+\subsection{States and validation}
+No loading, empty, error, or form-validation states exist in CodeLab chrome. The \texttt{statusText} prop (default ``Ready to compile'') is static text, not a live reflection of embed readiness. \textbf{Status:} IMPLEMENTED (static) / RECOMMENDED (drive it from embed events or remove it to avoid implying liveness).
+
+\subsection{Accessibility}
+Implemented: landmark \texttt{section} with \texttt{aria-label}, descriptive iframe \texttt{title}, decorative dots hidden via \texttt{aria-hidden}. Not implemented: focus-visible styles, reduced-motion handling, or keyboard shortcuts (all editor interaction lives inside the cross-origin iframe and cannot be managed here). \textbf{Status:} PARTIAL.

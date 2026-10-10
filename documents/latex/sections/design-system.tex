@@ -1,0 +1,23 @@
+\section{Design System}
+\label{sec:design-system}
+
+\textbf{Status:} IMPLEMENTED (values extracted verbatim from code; no Figma or token file exists).
+
+\begin{table}[H]
+\centering
+\caption{Actual design values in use}
+\begin{tabular}{|l|p{8.5cm}|}
+\hline
+\textbf{Token} & \textbf{Value and location} \\ \hline
+Page background & \texttt{\#070b12} in \texttt{page.tsx} (prototype used the same base plus indigo/cyan radial gradients) \\ \hline
+Editor surface & \texttt{\#0f172a} header (85\% opacity) and iframe surround in \texttt{CodeEditor.tsx} \\ \hline
+Borders & \texttt{white/[0.08]} hairline under header \\ \hline
+Dots & \texttt{bg-slate-600}, 10px circles; status dot \texttt{bg-green-500} with green glow shadow \\ \hline
+Typography & Title 14px semibold slate-50; status 12px slate-400; body Geist sans via \texttt{next/font} (prototype used Inter) \\ \hline
+Header metrics & \texttt{px 18px / py 15px} desktop, \texttt{p-3} mobile; backdrop blur 14px \\ \hline
+Radius | Shadows | Motion & Full-bleed: no radius or shadow on the fitted component (prototype had 16px radius + deep shadow on its centered card) \\ \hline
+Breakpoints & Tailwind defaults; explicit adaptations at \texttt{max-sm} (640px) \\ \hline
+\end{tabular}
+\end{table}
+
+There is no button, input, card, modal, table, or icon subsystem in the app; documenting one would be fabrication. \textbf{Status:} NOT APPLICABLE beyond the window chrome above.
