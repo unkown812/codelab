@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "CodeLab — Online Compiler",
-  description: "Write, compile and run code online with CodeLab.",
+  title: "CodeLab — Write. Run. Ship Code.",
+  description:
+    "CodeLab is the fast online compiler. Write, compile and run 80+ languages in your browser — no setup.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 };
 
@@ -24,10 +28,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${plexMono.variable} h-full bg-[#0b0b0b] antialiased`}
     >
-      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-      <body className="m-0 flex h-dvh w-full flex-col overflow-hidden p-0">{children}</body>
+      <body className="m-0 flex min-h-dvh w-full flex-col bg-[#0b0b0b] p-0 text-white">
+        <Navbar />
+        <div className="flex w-full flex-1 flex-col">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
+@theme {
+  /* Saniti-inspired tokens (DESIGN.md) — applied to CodeLab */
+  --color-canvas: #0b0b0b;
+  --color-canvas-soft: #212121;
+  --color-canvas-light: #ffffff;
+  --color-canvas-paper: #ededed;
+
+  --color-primary: #0b0b0b;
+  --color-brand: #f36458;
+  --color-brand-deep: #dd0000;
+
+  --color-ink: #0b0b0b;
+  --color-ink-soft: #212121;
+  --color-graphite: #353535;
+  --color-slate: #3c4758;
+  --color-slate-soft: #505b6c;
+  --color-mute: #797979;
+  --color-ash: #b9b9b9;
+
+  --color-hairline: #ededed;
+  --color-hairline-soft: #353535;
+
+  --color-link-blue: #0052ef;
+  --color-link-blue-soft: #55beff;
+  --color-surface-blue-bg: #afe3ff;
+  --color-success: #37cd84;
+  --color-error: #dd0000;
+
+  --color-background: #0b0b0b;
+  --color-foreground: #ffffff;
+
+  --font-sans: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-app-xs: 3px;
+  --radius-app-sm: 4px;
+  --radius-app-md: 5px;
+  --radius-app-lg: 6px;
+  --radius-marketing: 12px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0b0b;
+  --foreground: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Editorial display: Inter tightened to stand in for waldenburgNormal */
+.display-brand {
+  font-family: var(--font-sans);
+  font-feature-settings:
+    "cv01", "cv11", "cv12", "cv13", "ss07";
+  text-wrap: balance;
+}
+
+.mono-eyebrow {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: #f36458;
+  color: #0b0b0b;
 }
