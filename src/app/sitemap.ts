@@ -1,12 +1,6 @@
 import type { MetadataRoute } from "next";
 import { LANGUAGE_SLUGS, SITE_URL } from "@/lib/seo";
-
-const BLOG_SLUGS = [
-  "run-python-online-no-install",
-  "share-code-run-link",
-  "run-javascript-online-node",
-  "stdin-guide-online-compiler",
-];
+import { POSTS } from "@/lib/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
@@ -43,9 +37,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...BLOG_SLUGS.map((s) => ({
-      url: `${SITE_URL}/blog/${s}`,
-      lastModified: now,
+    ...POSTS.map((p) => ({
+      url: `${SITE_URL}/blog/${p.slug}`,
+      lastModified: p.date ? new Date(p.date) : now,
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
