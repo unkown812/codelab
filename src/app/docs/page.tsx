@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 
@@ -150,9 +151,9 @@ export default function DocsPage() {
               </Link>
               <Link
                 href="/languages"
-                className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+                className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
               >
-                Browse languages →
+                Browse languages <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -167,8 +168,8 @@ export default function DocsPage() {
               { label: "Run Python online guide", href: "/languages/python" },
               { label: "Online compiler vs local IDE", href: "/compare/online-compiler-vs-local-ide" },
             ].map((l) => (
-              <Link key={l.href} href={l.href} className="text-[15px] text-ash underline decoration-mute underline-offset-4 transition hover:text-white">
-                {l.label} →
+              <Link key={l.href} href={l.href} className="inline-flex items-center gap-1.5 text-[15px] text-ash underline decoration-mute underline-offset-4 transition hover:text-white">
+                {l.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             ))}
           </div>

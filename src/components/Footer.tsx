@@ -41,19 +41,19 @@ const COLS: { h: string; links: { label: string; href: string }[] }[] = [
   {
     h: "COMPANY",
     links: [
-      { label: "About", href: "/docs" },
-      { label: "Contact", href: "/docs" },
-      { label: "Privacy", href: "/docs" },
-      { label: "Terms", href: "/docs" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
     ],
   },
   {
     h: "COMPARE",
     links: [
+      { label: "All comparisons", href: "/compare" },
       { label: "Online vs local IDE", href: "/compare/online-compiler-vs-local-ide" },
       { label: "Pro vs Free", href: "/pricing" },
       { label: "FAQ", href: "/docs" },
-      { label: "Start coding", href: "/compiler" },
     ],
   },
 ];

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
@@ -116,9 +117,9 @@ export default async function BlogPostPage({
               <Link
                 key={r.href}
                 href={r.href}
-                className="text-[16px] text-white underline decoration-mute underline-offset-4 transition hover:text-brand"
+                className="inline-flex items-center gap-1.5 text-[16px] text-white underline decoration-mute underline-offset-4 transition hover:text-brand"
               >
-                {r.label} →
+                {r.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             ))}
           </div>

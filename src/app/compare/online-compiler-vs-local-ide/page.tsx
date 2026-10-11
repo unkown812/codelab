@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/seo";
@@ -44,8 +45,8 @@ export default function ComparePage() {
         <Breadcrumbs
           trail={[
             { label: "Home", href: "/" },
-            { label: "Compare", href: "/compare/online-compiler-vs-local-ide" },
-            { label: "Online vs local", href: "/compare/online-compiler-vs-local-ide" },
+            { label: "Compare", href: "/compare" },
+            { label: "Online vs local IDE", href: "/compare/online-compiler-vs-local-ide" },
           ]}
         />
         <p className="mt-8 font-mono text-[13px] tracking-[0.08em] text-mute uppercase">
@@ -101,9 +102,9 @@ export default function ComparePage() {
           </Link>
           <Link
             href="/use-cases/students"
-            className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+            className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
           >
-            Students start here →
+            Students start here <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </article>

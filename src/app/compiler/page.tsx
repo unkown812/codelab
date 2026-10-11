@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CompilerView from "@/components/CompilerView";
 import JsonLd from "@/components/JsonLd";
@@ -83,9 +84,9 @@ export default function CompilerPage() {
           </h1>
           <Link
             href="/docs"
-            className="text-[13px] font-medium text-ash transition hover:text-white"
+            className="inline-flex items-center gap-1 text-[13px] font-medium text-ash transition hover:text-white"
           >
-            New here? Read the 10-second quickstart →
+            New here? Read the 10-second quickstart <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         </div>
         <CompilerView />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/seo";
@@ -75,9 +76,9 @@ export default function UseCasesPage() {
               </p>
               <Link
                 href={`/use-cases/${c.slug}`}
-                className="mt-6 text-[13px] font-medium text-ash transition hover:text-white"
+                className="mt-6 inline-flex items-center gap-1 text-[13px] font-medium text-ash transition hover:text-white"
               >
-                How {c.title.toLowerCase()} use CodeLab →
+                How {c.title.toLowerCase()} use CodeLab <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </article>
           ))}

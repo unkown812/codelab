@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import CodeEditor from "@/components/CodeEditor";
 import { SITE_URL } from "@/lib/seo";
@@ -111,9 +112,9 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/features"
-                  className="inline-flex h-9 items-center rounded-app-md border border-hairline-soft bg-canvas-soft px-4 text-[13px] font-medium text-ash transition hover:text-white"
+                  className="inline-flex h-9 items-center gap-1.5 rounded-app-md border border-hairline-soft bg-canvas-soft px-4 text-[13px] font-medium text-ash transition hover:text-white"
                 >
-                  See how it works ↓
+                  See how it works <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -133,9 +134,9 @@ export default function Home() {
                 </div>
                 <Link
                   href="/compiler"
-                  className="font-mono text-[11px] text-ash transition hover:text-white"
+                  className="inline-flex items-center gap-1 font-mono text-[11px] text-ash transition hover:text-white"
                 >
-                  Open full compiler →
+                  Open full compiler <ArrowRight className="h-3 w-3" aria-hidden="true" />
                 </Link>
               </div>
               <div className="h-[560px] bg-[#0f172a]">
@@ -222,9 +223,9 @@ export default function Home() {
               </div>
               <Link
                 href="/features"
-                className="text-[13px] font-medium text-ash transition hover:text-white"
+                className="inline-flex items-center gap-1 text-[13px] font-medium text-ash transition hover:text-white"
               >
-                All features →
+                All features <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </div>
 
@@ -243,9 +244,9 @@ export default function Home() {
                   </p>
                   <Link
                     href={f.href}
-                    className="mt-6 text-[13px] font-medium text-ash transition hover:text-white"
+                    className="mt-6 inline-flex items-center gap-1 text-[13px] font-medium text-ash transition hover:text-white"
                   >
-                    Learn more →
+                    Learn more <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </Link>
                 </article>
               ))}
@@ -277,9 +278,9 @@ export default function Home() {
                 </h3>
                 <Link
                   href="/languages"
-                  className="text-[13px] font-medium text-ash transition hover:text-white"
+                  className="inline-flex items-center gap-1 text-[13px] font-medium text-ash transition hover:text-white"
                 >
-                  All languages →
+                  All languages <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
@@ -365,15 +366,15 @@ export default function Home() {
               </Link>
               <Link
                 href="/docs"
-                className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+                className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
               >
-                Read the docs →
+                Read the docs <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link
                 href="/blog"
-                className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+                className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
               >
-                Guides →
+                Guides <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-mute">

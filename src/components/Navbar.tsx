@@ -65,7 +65,7 @@ export default function Navbar() {
             Sign In
           </Link>
           <Link
-            href="/docs"
+            href="/contact"
             className="hidden h-9 items-center rounded-app-md border border-hairline-soft bg-canvas-soft px-3 text-[13px] font-medium text-ash transition hover:text-white md:inline-flex"
           >
             Book a Demo

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { POSTS } from "@/lib/posts";
@@ -62,9 +63,9 @@ export default function BlogPage() {
               </p>
               <Link
                 href={`/blog/${p.slug}`}
-                className="mt-6 text-[13px] font-medium text-ash transition hover:text-white"
+                className="mt-6 inline-flex items-center gap-1 text-[13px] font-medium text-ash transition hover:text-white"
               >
-                Read the guide →
+                Read the guide <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </article>
           ))}

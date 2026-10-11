@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { LANGUAGE_META, LANGUAGE_SLUGS } from "@/lib/seo";
 
@@ -46,8 +47,8 @@ export default function LanguageExplorer() {
                 {l.runtime}
               </p>
             </div>
-            <span className="text-[13px] text-ash transition group-hover:text-white">
-              Guide →
+            <span className="inline-flex items-center gap-1 text-[13px] text-ash transition group-hover:text-white">
+              Guide <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
           </Link>
         ))}

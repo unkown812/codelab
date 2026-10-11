@@ -22,6 +22,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/use-cases/teachers", priority: 0.6, changeFrequency: "monthly" },
     { path: "/use-cases/interviews", priority: 0.6, changeFrequency: "monthly" },
     { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
+    { path: "/compare", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
+    { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
+    { path: "/terms", priority: 0.4, changeFrequency: "yearly" },
     { path: "/compare/online-compiler-vs-local-ide", priority: 0.6, changeFrequency: "monthly" },
   ];
 

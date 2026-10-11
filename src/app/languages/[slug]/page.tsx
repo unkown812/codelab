@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
@@ -205,9 +206,9 @@ export default async function LanguageGuidePage({
               <Link
                 key={r}
                 href={`/languages/${r}`}
-                className="rounded-full border border-hairline-soft bg-canvas-soft px-4 py-2 text-[13px] text-ash transition hover:text-white"
+                className="inline-flex items-center gap-1.5 rounded-full border border-hairline-soft bg-canvas-soft px-4 py-2 text-[13px] text-ash transition hover:text-white"
               >
-                Run {LANGUAGE_META[r].label} online →
+                Run {LANGUAGE_META[r].label} online <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             ))}
             <Link

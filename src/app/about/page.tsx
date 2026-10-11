@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { CREATOR_NAME, SITE_URL } from "@/lib/seo";
@@ -83,9 +84,9 @@ export default function AboutPage() {
           </Link>
           <Link
             href="/docs"
-            className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+            className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
           >
-            Read the docs →
+            Read the docs <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

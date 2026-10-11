@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -28,9 +29,9 @@ export default function NotFound() {
         </Link>
         <Link
           href="/docs"
-          className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+          className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
         >
-          Read the docs →
+          Read the docs <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
     </main>

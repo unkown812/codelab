@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import LanguageExplorer from "@/components/LanguageExplorer";
@@ -62,9 +63,9 @@ export default function LanguagesPage() {
           </Link>
           <Link
             href="/pricing"
-            className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+            className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
           >
-            Compare plans →
+            Compare plans <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>
