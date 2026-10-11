@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Saniti-inspired tokens (DESIGN.md) — applied to CodeLab */
+  /* CodeLabs-inspired tokens (DESIGN.md) — applied to CodeLab */
   --color-canvas: #0b0b0b;
   --color-canvas-soft: #212121;
   --color-canvas-light: #ffffff;
