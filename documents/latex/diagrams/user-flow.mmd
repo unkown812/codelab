@@ -1,6 +1,13 @@
-%% User flow — render with Mermaid, export PNG to diagrams/ for Word builds.
+%% User flows — render with Mermaid, export PNG to diagrams/ for Word builds.
+%% Updated v1.1: multi-route journeys (landing, guides, compiler, sharing).
 flowchart TD
-    A["Open /"] --> B["See full-viewport<br/>editor window"]
-    B --> C["Type code<br/>(inside OneCompiler iframe)"]
-    C --> D["Run (OneCompiler UI)"]
-    D --> E["See output<br/>(inside iframe)"]
+    Home["Open / landing"] --> Compiler["/compiler playground"]
+    Home --> Guides["/languages or /blog guides"]
+    Guides --> Slug["Guide page: sample + steps + FAQ"]
+    Slug --> Compiler
+    Compiler --> Pick["Pick runtime pill"]
+    Pick --> Type["Type code (inside OneCompiler iframe)"]
+    Type --> Run["Run (OneCompiler UI)"]
+    Run --> Out["See output (inside iframe)"]
+    Teacher["Teacher: /use-cases/teachers"] --> Share["Share starter compiler link"]
+    Share --> Students["Students edit + re-share run URLs"]

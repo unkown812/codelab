@@ -1,7 +1,7 @@
 \section{SEO}
 \label{sec:seo}
 
-\textbf{Status:} IMPLEMENTED (current) / RECOMMENDED (improvements). AEO and GEO have no dedicated implementation and are NOT APPLICABLE beyond the general semantic-HTML notes below.
+\textbf{Status:} IMPLEMENTED (verified in code on 2026-10-11). AEO and GEO have dedicated implementations in Sections~\ref{sec:aeo} and~\ref{sec:geo}.
 
 \subsection{Current implementation}
 \begin{table}[H]
@@ -10,13 +10,16 @@
 \begin{tabular}{|l|p{8.5cm}|}
 \hline
 \textbf{Signal} & \textbf{Evidence} \\ \hline
-Title + description & \texttt{layout.tsx} metadata: ``CodeLab --- Online Compiler'' / ``Write, compile and run code online with CodeLab.'' \\ \hline
-Language + favicon & \texttt{<html lang="en">}, \texttt{icons.icon=/favicon.ico} \\ \hline
-Semantic landmark & \texttt{section\#compiler} with \texttt{aria-label}, iframe \texttt{title} \\ \hline
+Title template + descriptions & \texttt{layout.tsx} title template \texttt{\%s --- CodeLab}; unique title/description per route \\ \hline
+Canonical URLs & \texttt{alternates.canonical} on every route; \texttt{metadataBase} set to the production URL \\ \hline
+Open Graph + Twitter & Per-route OG/Twitter titles, descriptions, images (\texttt{layout.tsx} + page \texttt{metadata}) \\ \hline
+Robots + sitemap + manifest & \texttt{robots.ts}, \texttt{sitemap.ts} (33 URLs), \texttt{manifest.ts} \\ \hline
+Crawlable content & Server-rendered guides, FAQs, comparisons; editor-only content avoided for key facts \\ \hline
+Semantic HTML & One H1 per route, breadcrumb \texttt{nav}, tables with \texttt{th scope}, labelled landmarks \\ \hline
+Internal linking & Navbar, footer grid, contextual cross-links; no orphan indexable route \\ \hline
+Custom 404 & \texttt{not-found.tsx} with navigation (no soft-404) \\ \hline
 \end{tabular}
 \end{table}
 
-Missing (verified absent): sitemap, \texttt{robots.txt}, canonical URLs, Open Graph/Twitter cards, JSON-LD structured data, and indexable content beyond the chrome (the editor lives in a cross-origin iframe and contributes no crawlable text). The prototype \texttt{index.html} had richer marketing copy (hero/features) that was not carried into the app.
-
-\subsection{Recommended improvements (RECOMMENDED)}
-Add OG/Twitter meta, a \texttt{robots.txt} + sitemap for the single route, canonical URL once a domain is chosen, and---if search traffic matters---a server-rendered content section describing supported languages, because the current route offers crawlers almost no text.
+\subsection{Known limitations}
+The playground editor itself lives in a cross-origin iframe and contributes no crawlable text; surrounding pages carry the indexable content instead. The social/OG image reuses the 261px favicon (no dedicated 1200px share image). \textbf{Status:} IMPLEMENTED (limitation) / RECOMMENDED (dedicated OG image, see Section~\ref{sec:roadmap}).

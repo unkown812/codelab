@@ -1,9 +1,10 @@
 # CodeLab Documentation
 
 Evidence-based documentation suite for the CodeLab repository (`C:/Dev/codelab`:
-root static prototype `index.html` + Next.js app in `codelab/`).
-Generated strictly from repository analysis on 2026-10-10. No features, APIs,
-customers, or metrics outside the repo are claimed.
+Next.js App Router application at the repository root).
+Generated strictly from repository analysis on 2026-10-11 (v1.1 refresh of the
+2026-10-10 v1.0 suite). No features, APIs, customers, or metrics outside the
+repo are claimed.
 
 ## Purpose
 
@@ -18,9 +19,9 @@ documents/
 ├── latex/
 │   ├── main.tex         (master document)
 │   ├── preamble.tex     (packages + style)
-│   ├── metadata.tex     (title-page metadata)
-│   ├── sections/        (22 modular section files)
-│   └── diagrams/        (Mermaid sources, .mmd)
+│   ├── metadata.tex     (title-page metadata, v1.1)
+│   ├── sections/        (30 modular section files)
+│   └── diagrams/        (Mermaid sources, .mmd: system, user-flow, data-flow, routes, component)
 └── output/              (generated DOCX/PDF go here)
 ```
 
@@ -28,39 +29,49 @@ documents/
 
 | Section | File | Status |
 |---|---|---|
-| Executive Summary | `sections/executive-summary.tex` | Written (IMPLEMENTED + marked INFERRED) |
-| Project Overview | `sections/project-overview.tex` | Written |
-| Product Description | `sections/project-description.tex` | Written |
-| PRD | `sections/prd.tex` | Written (reconstructed, marked INFERRED) |
-| Functional Requirements | `sections/functional-requirements.tex` | Written (FR-01..FR-10) |
-| Non-Functional Requirements | `sections/non-functional-requirements.tex` | Written |
-| Technical Requirements | `sections/technical-requirements.tex` | Written |
-| Software and System Architecture | `sections/software-architecture.tex` | Written (backend/DB marked NOT APPLICABLE) |
-| Frontend Architecture | `sections/frontend-architecture.tex` | Written |
-| Integrations | `sections/integrations.tex` | Written (OneCompiler only) |
-| Configuration | `sections/configuration.tex` | Written (no env vars) |
-| UI/UX | `sections/ui-ux.tex` | Written |
-| Design System | `sections/design-system.tex` | Written (values extracted verbatim) |
-| Security | `sections/security.tex` | Written (review table) |
-| Performance and Scalability | `sections/performance.tex` | Written (INFERRED, no measurements) |
-| Testing | `sections/testing.tex` | Written (NOT APPLICABLE + recommended strategy) |
-| Deployment | `sections/deployment.tex` | Written |
-| SEO | `sections/seo.tex` | Written (AEO/GEO: NOT APPLICABLE) |
-| Known Issues | `sections/known-issues.tex` | Written (5 verified issues) |
-| Technical Debt | `sections/technical-debt.tex` | Written |
-| Roadmap | `sections/roadmap.tex` | Written (EXISTING vs RECOMMENDED vs POTENTIAL) |
-| Development Guidelines | `sections/development-guidelines.tex` | Written (doubles as contribution guide) |
-| Glossary | `sections/glossary.tex` | Written |
+| Executive Summary | `sections/executive-summary.tex` | Refreshed v1.1 (multi-route app) |
+| Project Overview | `sections/project-overview.tex` | Refreshed v1.1 (routes, remote, deployment) |
+| Product Description | `sections/project-description.tex` | Refreshed v1.1 (guides, SEO signals) |
+| BRD | `sections/brd.tex` | New in v1.1 (evidence-only, metrics marked UNKNOWN) |
+| PRD | `sections/prd.tex` | Refreshed v1.1 (reconstructed, marked INFERRED) |
+| Functional Requirements | `sections/functional-requirements.tex` | Extended (FR-01..FR-18) |
+| Non-Functional Requirements | `sections/non-functional-requirements.tex` | Refreshed v1.1 |
+| Technical Requirements | `sections/technical-requirements.tex` | Refreshed v1.1 (fonts, icons, CI, license fields) |
+| Software and System Architecture | `sections/software-architecture.tex` | Refreshed v1.1 (layers incl. SEO) |
+| Frontend Architecture | `sections/frontend-architecture.tex` | Refreshed v1.1 (full route tree + catalogue) |
+| Integrations | `sections/integrations.tex` | Verified current (OneCompiler only) |
+| User Flows | `sections/user-flows.tex` | New in v1.1 (4 evidence-traced journeys) |
+| Data Flows | `sections/data-flows.tex` | New in v1.1 (build-time + runtime, nothing stored) |
+| Configuration | `sections/configuration.tex` | Refreshed v1.1 (root paths, CI, editorconfig) |
+| UI/UX | `sections/ui-ux.tex` | Refreshed v1.1 (screens, states, a11y) |
+| Design System | `sections/design-system.tex` | Refreshed v1.1 (DESIGN.md + @theme tokens) |
+| Security | `sections/security.tex` | Refreshed v1.1 (SECURITY.md, share-link row) |
+| Performance and Scalability | `sections/performance.tex` | Refreshed v1.1 (33 URLs, islands) |
+| Testing | `sections/testing.tex` | Verified current (NOT APPLICABLE + strategy) |
+| Deployment | `sections/deployment.tex` | Refreshed v1.1 (root commands, CI, observed host) |
+| CI/CD | `sections/cicd.tex` | New in v1.1 (workflow + Dependabot + templates) |
+| SEO | `sections/seo.tex` | Refreshed v1.1 (implemented inventory) |
+| AEO | `sections/aeo.tex` | New in v1.1 |
+| GEO | `sections/geo.tex` | New in v1.1 |
+| Known Issues | `sections/known-issues.tex` | Refreshed v1.1 (fixed items kept as history) |
+| Technical Debt | `sections/technical-debt.tex` | Refreshed v1.1 (resolved items kept as history) |
+| Roadmap | `sections/roadmap.tex` | Refreshed v1.1 (shipped items moved to EXISTING) |
+| Development Guidelines | `sections/development-guidelines.tex` | Refreshed v1.1 (AGENTS.md/CONTRIBUTING.md) |
+| Contribution Guide | `sections/contribution-guide.tex` | New in v1.1 (summarizes repo files) |
+| Glossary | `sections/glossary.tex` | Extended v1.1 (AEO/GEO/JSON-LD/canonical) |
 
-Intentionally omitted (no evidence in repo; creating them would be fabrication):
-BRD, backend architecture, database design/ERD, API reference, authentication,
-authorization, CI/CD pipelines, AEO/GEO standalone docs.
+Still intentionally omitted (no evidence in repo; creating them would be
+fabrication): backend architecture, database design/ERD, API reference,
+authentication, authorization, environment-variable secrets. System,
+high-level, and low-level design stay merged into `software-architecture.tex`
+and scalability into `performance.tex` by design.
 
 ## Build instructions
 
 Requires a LaTeX distribution (TeX Live / MiKTeX) with `pdflatex` + `latexmk`.
 No LaTeX toolchain was available in the analysis environment, so PDF/DOCX were
-not generated here.
+not generated here. (`documents/output/Documentation.pdf` is a stale v1.0
+artifact — regenerate after this refresh.)
 
 ```bash
 cd documents/latex
@@ -79,7 +90,7 @@ Diagrams: render each `diagrams/*.mmd` with Mermaid CLI and, for print builds,
 include the PNGs as figures:
 
 ```bash
-mmdc -i diagrams/system-context.mmd -o diagrams/system-context.png
+mmdc -i diagrams/routes-sitemap.mmd -o diagrams/routes-sitemap.png
 ```
 
 ## Known documentation gaps
@@ -89,3 +100,5 @@ mmdc -i diagrams/system-context.mmd -o diagrams/system-context.png
   (https://onecompiler.com/apis/embed-editor) is referenced.
 - No product tracker, so PRD/roadmap items are reconstructions and
   recommendations, clearly labeled as such.
+- Hosting is observed (Vercel URL serves the app) but unconfigured in-repo;
+  deployment specifics beyond local commands + CI are operator-owned.

@@ -11,9 +11,10 @@
 \textbf{Item} & \textbf{Priority} & \textbf{Detail} \\ \hline
 Untested URL builder & High & \texttt{buildOneCompilerSrc} is the only logic in the app and has no tests. Pay down with unit tests (Section~\ref{sec:testing}). \\ \hline
 Default mismatch (Sec.~\ref{sec:known-issues}) & High & Same fix as above; decide the canonical defaults once. \\ \hline
-Dead template code & Low & \texttt{globals.css} variables, unused \texttt{public} SVGs. \\ \hline
-Prototype drift & Medium & \texttt{index.html} (563 lines, marketing sections) and the app diverged; keep the file as reference or archive it so future readers are not misled. \\ \hline
 No pinning of embed contract & Medium & Embed URL schema is assumed from public docs; no version pin or smoke test. \\ \hline
+Unpinned Node runtime & Medium & No \texttt{engines}, \texttt{.nvmrc}, or \texttt{packageManager} field; CI builds on Node 22 by convention only. \\ \hline
 Missing headers/CSP & Low & No security-header configuration (Section~\ref{sec:security}). \\ \hline
+Prototype drift & --- & RESOLVED 2026-10-11: the legacy \texttt{index.html} and \texttt{codelab/} subdirectory no longer exist; this suite now documents the root-level app. \\ \hline
+Dead template code & --- & RESOLVED 2026-10-11 (see Section~\ref{sec:known-issues}). \\ \hline
 \end{tabular}
 \end{table}

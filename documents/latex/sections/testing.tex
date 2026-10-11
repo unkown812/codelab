@@ -4,12 +4,12 @@
 \textbf{Status:} NOT APPLICABLE (no test infrastructure exists) --- documented explicitly rather than invented.
 
 \subsection{Current state}
-No test runner, script, or spec file is present: \texttt{package.json} defines only \texttt{dev/build/start/lint}; file search finds no \texttt{*.test.*} or \texttt{*.spec.*}; no Playwright/Cypress/Vitest/Jest configuration exists. The only automated quality gate is \texttt{eslint} plus the TypeScript check inside \texttt{next build} (both passing at the time of analysis).
+No test runner, script, or spec file is present: \texttt{package.json} defines only \texttt{dev/build/start/lint}; file search finds no \texttt{*.test.*} or \texttt{*.spec.*}; no Playwright/Cypress/Vitest/Jest configuration exists. Automated quality gates are \texttt{eslint}, the TypeScript check inside \texttt{next build}, and the CI workflow (all passing at the time of analysis, 2026-10-11).
 
 \subsection{Recommended strategy (RECOMMENDED, not implemented)}
 \begin{enumerate}
 \item \textbf{Unit:} tests for \texttt{buildOneCompilerSrc} (path joining, flag serialization, \texttt{fontSize} clamping, slash stripping) and the helper/component default mismatch noted in Section~\ref{sec:known-issues}.
-\item \textbf{Component:} render test asserting one \texttt{section\#compiler} with one iframe and correct \texttt{src} for given props.
-\item \textbf{E2E smoke (optional):} visit \texttt{/}, assert the frame renders; stub or allow-list the third-party iframe per environment policy.
-\item \textbf{Manual QA checklist:} viewport-gap check at 360/768/1440px; embed loads with network; graceful empty editor area without network; clipboard copy/paste inside the embed.
+\item \textbf{Component:} render test asserting the compiler region contains one iframe with the correct \texttt{src} for given props.
+\item \textbf{E2E smoke (optional):} visit \texttt{/compiler}, assert the frame renders; stub or allow-list the third-party iframe per environment policy.
+\item \textbf{Manual QA checklist:} viewport check at 360/768/1440px; embed loads with network; graceful empty editor area without network; clipboard copy/paste inside the embed; mobile menu and search filter behavior.
 \end{enumerate}

@@ -4,13 +4,13 @@
 \textbf{Status:} IMPLEMENTED for features; INFERRED where user value is interpreted (marked).
 
 \subsection{Product identity}
-CodeLab is a thin full-viewport wrapper around the OneCompiler editor embed. Product category: online code playground / compiler front end. \textbf{Status:} IMPLEMENTED.
+CodeLab is a free online compiler with editorial-grade guides: a live playground for 80+ languages plus server-rendered content (language guides, tutorials, use cases, comparisons). Product category: online code playground with documentation hub. \textbf{Status:} IMPLEMENTED.
 
 \subsection{Problem and solution}
-Problem (INFERRED): users who want to try or share code without installing toolchains need an instantly available editor. Solution (IMPLEMENTED): a single route that fills the viewport with the OneCompiler iframe, framed by a minimal dark window chrome (traffic-light dots, title, static status indicator).
+Problem (INFERRED): users who want to try, learn, or share code without installing toolchains need an instantly available editor \textit{and} answers to follow-up questions (stdin handling, sharing, language choice). Solution (IMPLEMENTED): the \texttt{/compiler} route fills the viewport with the OneCompiler iframe framed by CodeLab chrome, while 32 companion pages provide guides, FAQs, and comparisons in crawlable HTML.
 
 \subsection{Target audience and personas}
-No personas are defined in the repository. \textbf{Status:} UNKNOWN. Plausible audiences (INFERRED, not claimed as requirements): students trying small snippets, interviewers sharing a runnable page, documentation authors linking a live editor. These are listed as hypotheses only.
+The repository now encodes audiences as first-class pages under \texttt{src/app/use-cases/}: students, teachers, and interview candidates, each with a dedicated workflow page. \textbf{Status:} IMPLEMENTED (pages) / INFERRED (that these convert to product requirements---no tracker exists).
 
 \subsection{Features (implemented)}
 \begin{table}[H]
@@ -19,11 +19,15 @@ No personas are defined in the repository. \textbf{Status:} UNKNOWN. Plausible a
 \begin{tabular}{|p{4cm}|p{8.5cm}|}
 \hline
 \textbf{Feature} & \textbf{Evidence} \\ \hline
-Full-viewport editor & \texttt{CodeEditor.tsx} section \texttt{h-dvh w-full flex-col}; \texttt{page.tsx} and \texttt{layout.tsx} bodies use \texttt{h-dvh overflow-hidden} \\ \hline
-OneCompiler embed & \texttt{iframe\#onecompiler}, \texttt{allow="clipboard-read; clipboard-write"} \\ \hline
+Full-height playground & \texttt{/compiler} renders \texttt{CompilerView} (runtime switcher pills) over \texttt{CodeEditor} in a 72vh studio window \\ \hline
+OneCompiler embed & \texttt{iframe\#onecompiler}, \texttt{allow="clipboard-read; clipboard-write"}, \texttt{loading="lazy"} \\ \hline
 Configurable embed URL & \texttt{buildOneCompilerSrc} supports \texttt{language}, \texttt{codeId}, \texttt{theme}, \texttt{fontSize}, 12 boolean flags, plus full \texttt{src} override \\ \hline
-Dark window chrome & Tailwind classes \texttt{bg-[\#0f172a]}, \texttt{bg-[\#070b12]}, status dot \texttt{bg-green-500} \\ \hline
-Responsive header & Status cluster hidden on small screens (\texttt{max-sm:hidden}), reduced header padding \\ \hline
+Per-language guides & 12 static pages from \texttt{languages/[slug]} with sample programs, steps, FAQs (\texttt{src/lib/seo.ts}) \\ \hline
+Blog guides & 4 posts from \texttt{blog/[slug]} with sections, FAQs, related links (\texttt{src/lib/posts.ts}) \\ \hline
+Use-case workflows & \texttt{/use-cases} hub + students/teachers/interviews pages \\ \hline
+Legal + contact & \texttt{/about}, \texttt{/contact}, \texttt{/privacy}, \texttt{/terms} (factual, zero-backend wording) \\ \hline
+SEO infrastructure & \texttt{robots.ts}, \texttt{sitemap.ts} (33 URLs), \texttt{manifest.ts}, per-page canonical/OG/Twitter, JSON-LD via \texttt{JsonLd}, breadcrumbs \\ \hline
+Custom 404 & \texttt{not-found.tsx} with navigation links \\ \hline
 \end{tabular}
 \end{table}
 
@@ -31,4 +35,4 @@ Responsive header & Status cluster hidden on small screens (\texttt{max-sm:hidde
 User accounts, saved sessions, multi-file projects owned by CodeLab, theming beyond the embed \texttt{theme}/\texttt{fontSize} parameters, and offline execution do not exist in the repository. \textbf{Status:} NOT APPLICABLE (not implemented).
 
 \subsection{Visual identity and SEO keywords}
-Visual identity is dark navy (\texttt{\#070b12} page, \texttt{\#0f172a} editor) with indigo/cyan accents inherited from the prototype. Metadata title ``CodeLab --- Online Compiler'' and description ``Write, compile and run code online with CodeLab.'' are the only SEO signals. \textbf{Status:} IMPLEMENTED. See Section~\ref{sec:seo}.
+Visual identity follows \texttt{DESIGN.md}: near-black canvas (\texttt{\#0b0b0b}), coral accent (\texttt{\#f36458}), Inter display type with IBM Plex Mono eyebrows, pill CTAs, \texttt{lucide-react} link arrows. Metadata title ``CodeLab --- Write. Run. Ship Code.'' and per-route descriptions target ``online compiler'', ``run \{language\} online'', and stdin/sharing how-to queries. \textbf{Status:} IMPLEMENTED. See Sections~\ref{sec:seo}--\ref{sec:geo}.

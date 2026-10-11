@@ -50,8 +50,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 512,
-        height: 512,
+        width: 261,
+        height: 261,
         alt: "CodeLab logo — free online compiler",
       },
     ],

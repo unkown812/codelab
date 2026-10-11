@@ -1,0 +1,23 @@
+%% Route map of the CodeLab App Router application (Mermaid source only).
+%% Bake to PNG for print builds with Mermaid CLI:
+%%   mmdc -i diagrams/routes-sitemap.mmd -o diagrams/routes-sitemap.png
+flowchart TD
+    Root["/ home + playground preview"] --> Compiler["/compiler full-height playground"]
+    Root --> Features["/features"]
+    Root --> Languages["/languages index"]
+    Languages --> LangSlug["/languages/[slug] x12 guides"]
+    Root --> Pricing["/pricing 3 tiers"]
+    Root --> Docs["/docs quickstart + FAQ"]
+    Docs --> Blog["/blog hub"]
+    Blog --> Post["/blog/[slug] x4 guides"]
+    Root --> Uses["/use-cases hub"]
+    Uses --> Students["/use-cases/students"]
+    Uses --> Teachers["/use-cases/teachers"]
+    Uses --> Interviews["/use-cases/interviews"]
+    Root --> Compare["/compare hub"]
+    Compare --> VsLocal["/compare/online-compiler-vs-local-ide"]
+    Root --> About["/about"]
+    Root --> Contact["/contact"]
+    Root --> Privacy["/privacy"]
+    Root --> Terms["/terms"]
+    Compiler --> CodeEditor["CodeEditor iframe onecompiler.com/embed"]

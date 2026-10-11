@@ -1,19 +1,20 @@
 \section{Development Guidelines}
 \label{sec:development-guidelines}
 
-\textbf{Status:} IMPLEMENTED (workflow as configured) + RECOMMENDED (conventions to adopt). This section doubles as the contribution guide; no separate CONTRIBUTING file exists in the repo.
+\textbf{Status:} IMPLEMENTED (workflow as configured). Normative contributor text lives in \texttt{AGENTS.md} and \texttt{CONTRIBUTING.md}; this section summarizes it for print readers.
 
 \subsection{Setup and commands}
-Work from \texttt{codelab/}. Path alias \texttt{@/*} maps to \texttt{./src/*} (\texttt{tsconfig.json}); \texttt{page.tsx} already uses \texttt{@/components/CodeEditor}. Run \texttt{npm run lint} and \texttt{npm run build} before opening a change; both must pass.
+Work from the repository root. Path alias \texttt{@/*} maps to \texttt{./src/*} (\texttt{tsconfig.json}). Run \texttt{npm run lint} (zero warnings), \texttt{npx tsc --noEmit}, and \texttt{npm run build} before opening a change; regenerate route types with \texttt{npx next typegen} if \texttt{LayoutProps}/\texttt{PageProps} go stale. Formatting follows \texttt{.editorconfig} (LF, 2-space indent, final newline).
 
 \subsection{Conventions}
 \begin{itemize}
-\item Keep \texttt{CodeEditor} presentational: props in, iframe \texttt{src} out; no client state unless a \texttt{postMessage} bridge is explicitly designed and documented.
+\item Keep pages server-rendered with \texttt{metadata} exports; new interactivity goes in small client components (\texttt{CompilerView} and \texttt{LanguageExplorer} are the only islands).
+\item Every new indexable route needs title, description, canonical URL, JSON-LD, and a \texttt{sitemap.ts} entry.
 \item Keep the embed builder as the single place that knows the OneCompiler URL schema; never hand-concatenate embed URLs elsewhere.
-\item Preserve the full-bleed contract: no page-level margins, paddings, or max-width wrappers around the editor without updating Sections~\ref{sec:ui-ux} and~\ref{sec:design-system}.
-\item Prefer Tailwind utilities over new CSS files; the prototype \texttt{index.html} is reference-only---do not reintroduce its global reset into the app.
-\item Do not add backend, auth, or tracking without a matching documentation update and security review.
+\item Use Tailwind \texttt{@theme} tokens and \texttt{lucide-react} icons; never hardcode hex values or invent stats, customers, or offers.
+\item Content datasets live in \texttt{src/lib/} (\texttt{seo.ts}, \texttt{posts.ts}); extend them instead of ad-hoc JSX.
+\item Do not add backend, auth, tracking, or dependencies without a design doc and security review.
 \end{itemize}
 
 \subsection{Definition of done}
-Build + lint green, viewport-gap check at 360/768/1440px, embed loads with network access, no secrets added, and any prop/flag change reflected in Section~\ref{sec:functional-requirements} and the component docblock.
+Build + lint + typecheck green, requirements met, nothing else broken, focused diff reviewed, docs (\texttt{README.md}/\texttt{AGENTS.md}, plus this suite for behavioral changes) updated, \texttt{LICENSE} terms untouched, no secrets added.

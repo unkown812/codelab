@@ -4,13 +4,13 @@
 \textbf{Status:} IMPLEMENTED.
 
 \subsection{Screens}
-Exactly one screen: the editor window on \texttt{/}. There is no navigation, footer, dialog, or form owned by CodeLab. The prototype \texttt{index.html} styled a navbar, hero, badge, features grid, and footer, but none of those elements are rendered by the Next.js app; they are historical context only.
+33 indexable pages sharing one shell: sticky dark navbar (logo, route links with active state, mobile hamburger menu), content sections alternating dark/light polarity, and a 6-column footer. Key screens: landing with playground preview (\texttt{/}), full-height playground (\texttt{/compiler}), searchable language index, 12 language guides, pricing tiers, docs with FAQ accordions, blog, use cases, comparison, legal pages, and a custom 404 with navigation links.
 
 \subsection{Layout and responsive behavior}
-The section is a vertical flex column at \texttt{h-dvh}: a shrink-wrapped header plus a \texttt{flex-1 min-h-0} iframe region. On viewports under 640px the status cluster disappears (\texttt{max-sm:hidden}) and header padding shrinks, preserving editor height. The iframe fills remaining space at all widths; no max-width container constrains it (the prototype's \texttt{min(1400px, ...)} shell was removed when the component was fitted to the viewport).
+Content pages center in a \texttt{max-w-[1640px]} container with 96px section rhythm; display type steps down at small breakpoints (112px $\rightarrow$ 64px hero). The editor regions use fixed heights owned by parents (\texttt{h-[560px]} preview, \texttt{72vh} playground) with the section at \texttt{h-full}. Mobile menu collapses under 1024px; the pricing grid collapses 3-up to 1-up; footer collapses 6-column to stacked. \texttt{next/image} serves the logo with explicit dimensions (no layout shift).
 
 \subsection{States and validation}
-No loading, empty, error, or form-validation states exist in CodeLab chrome. The \texttt{statusText} prop (default ``Ready to compile'') is static text, not a live reflection of embed readiness. \textbf{Status:} IMPLEMENTED (static) / RECOMMENDED (drive it from embed events or remove it to avoid implying liveness).
+Interactive states owned by CodeLab: runtime switcher pills (\texttt{aria-pressed}), search filter with an explicit empty state (``No match'' + pointer to the compiler picker), FAQ \texttt{details/summary} disclosures, mobile menu toggle (\texttt{aria-expanded}). The embed \texttt{statusText} (``Ready to compile'') remains static text, not a live reflection of embed readiness. \textbf{Status:} IMPLEMENTED (static status) / RECOMMENDED (drive it from embed events or remove it to avoid implying liveness).
 
 \subsection{Accessibility}
-Implemented: landmark \texttt{section} with \texttt{aria-label}, descriptive iframe \texttt{title}, decorative dots hidden via \texttt{aria-hidden}. Not implemented: focus-visible styles, reduced-motion handling, or keyboard shortcuts (all editor interaction lives inside the cross-origin iframe and cannot be managed here). \textbf{Status:} PARTIAL.
+Implemented: skip-to-content link, \texttt{:focus-visible} outlines, landmark \texttt{section} elements with \texttt{aria-label}, descriptive iframe \texttt{title}, decorative dots hidden via \texttt{aria-hidden}, labelled search input, keyboard-native disclosures. Not implemented: keyboard control of remote iframe content (impossible cross-origin) and AA contrast on the smallest muted mono labels. \textbf{Status:} PARTIAL (see Section~\ref{sec:known-issues}).

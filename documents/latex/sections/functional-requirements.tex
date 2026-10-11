@@ -9,8 +9,8 @@
 \begin{tabular}{|l|p{6cm}|p{5.5cm}|}
 \hline
 \textbf{ID} & \textbf{Requirement} & \textbf{Evidence} \\ \hline
-FR-01 & Render a full-viewport compiler window on \texttt{/} & \texttt{page.tsx} renders \texttt{CodeEditor} inside \texttt{h-dvh overflow-hidden} containers \\ \hline
-FR-02 & Embed the OneCompiler editor via iframe & \texttt{CodeEditor.tsx} lines 174--181, \texttt{iframe\#onecompiler} \\ \hline
+FR-01 & Render a landing page with a live playground preview on \texttt{/} & \texttt{page.tsx} hero + studio-window preview embedding \texttt{CodeEditor} \\ \hline
+FR-02 & Embed the OneCompiler editor via iframe & \texttt{CodeEditor.tsx}, \texttt{iframe\#onecompiler} \\ \hline
 FR-03 & Default embed hides the remote title and enables code-change events & Defaults \texttt{hideTitle=true}, \texttt{codeChangeEvent=true} \\ \hline
 FR-04 & Allow language pre-selection via URL path & \texttt{language} prop $\rightarrow$ \texttt{/embed/\{language\}} \\ \hline
 FR-05 & Allow preloading saved code via code id & \texttt{codeId} prop $\rightarrow$ \texttt{/embed/\{language\}/\{codeId\}} \\ \hline
@@ -19,6 +19,14 @@ FR-07 & Allow hiding editor chrome elements & Flags \texttt{hideNew}, \texttt{hi
 FR-08 & Allow full URL override & \texttt{src} prop bypasses the builder \\ \hline
 FR-09 & Display static window title and status & \texttt{title} default ``Code Lab Compiler'', \texttt{statusText} default ``Ready to compile'' \\ \hline
 FR-10 & Hide status cluster on narrow screens & \texttt{max-sm:hidden} on status container \\ \hline
+FR-11 & Provide a full-height playground with runtime switcher on \texttt{/compiler} & \texttt{CompilerView.tsx} (\texttt{"use client"}, language pills, \texttt{key} remount per language) \\ \hline
+FR-12 & Serve 12 per-language guides with samples, steps, FAQs & \texttt{languages/[slug]} + \texttt{LANGUAGE\_META}, \texttt{SAMPLES} in code; \texttt{generateStaticParams} \\ \hline
+FR-13 & Serve 4 blog guides with sections, FAQs, related links & \texttt{blog/[slug]} + \texttt{POSTS} in \texttt{src/lib/posts.ts} \\ \hline
+FR-14 & Serve use-case, comparison, legal, and info pages & \texttt{use-cases/*}, \texttt{compare/*}, \texttt{about}, \texttt{contact}, \texttt{privacy}, \texttt{terms}, \texttt{features}, \texttt{pricing}, \texttt{docs} \\ \hline
+FR-15 & Expose sitemap, robots, and web manifest & \texttt{sitemap.ts} (33 URLs), \texttt{robots.ts}, \texttt{manifest.ts} \\ \hline
+FR-16 & Emit structured data and breadcrumbs on content pages & \texttt{JsonLd.tsx}, \texttt{Breadcrumbs.tsx} (WebSite, WebApplication, FAQPage, HowTo, BlogPosting, BreadcrumbList) \\ \hline
+FR-17 & Render a helpful 404 with navigation & \texttt{not-found.tsx} (home/compiler/docs links) \\ \hline
+FR-18 & Filter the language index client-side & \texttt{LanguageExplorer.tsx} search over \texttt{LANGUAGE\_SLUGS} \\ \hline
 \end{tabular}
 \end{table}
 

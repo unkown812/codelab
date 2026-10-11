@@ -1,0 +1,23 @@
+\section{Data Flows}
+\label{sec:data-flows}
+
+\textbf{Status:} IMPLEMENTED. CodeLab stores nothing; data moves at build time (content) and at runtime (browser to third-party embed).
+
+\subsection{Build-time data flow}
+Content datasets in \texttt{src/lib/} (\texttt{seo.ts} language metadata, \texttt{posts.ts} blog posts) feed \texttt{generateStaticParams}, which prerenders 12 language guides and 4 blog posts; \texttt{sitemap.ts} enumerates the same sources, so sitemap and pages cannot drift as long as both read the datasets. Mermaid source: \texttt{diagrams/data-flow.mmd}.
+
+\begin{lstlisting}[language=bash,caption={Build-time data flow (text diagram; Mermaid source in diagrams/data-flow.mmd)}]
+src/lib/seo.ts + posts.ts -> generateStaticParams -> 16 static pages
+src/lib/seo.ts -> sitemap.ts -> sitemap.xml (33 URLs)
+props -> buildOneCompilerSrc -> iframe src (runtime)
+\end{lstlisting}
+
+\subsection{Runtime data flow}
+\begin{enumerate}
+\item \textbf{Playground:} user keystrokes stay in the browser; on Run, code and stdin travel directly from the browser to \texttt{onecompiler.com} inside the cross-origin iframe. CodeLab servers see nothing (there are no servers beyond static hosting).
+\item \textbf{UI state:} two local \texttt{useState} values (selected runtime, search query) never leave the page and are never persisted.
+\item \textbf{Sharing:} run state travels peer-to-peer inside share URLs; CodeLab stores no snippets, accounts, or histories.
+\end{enumerate}
+
+\subsection{Third-party data exposure}
+The only data leaving the browser goes to the embed provider on user-initiated Run, governed by OneCompiler's policies, plus standard web logs at the static host. No analytics, cookies, or tracking pixels are set by CodeLab code. \textbf{Status:} IMPLEMENTED (verified by dependency and code inspection; see Section~\ref{sec:security}).

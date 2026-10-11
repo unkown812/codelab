@@ -1,0 +1,23 @@
+\section{User Flows}
+\label{sec:user-flows}
+
+\textbf{Status:} IMPLEMENTED (flows reconstructed from routes and components; no analytics verify real-user paths).
+
+\subsection{Flow 1 --- run code immediately}
+Landing (\texttt{/}) $\rightarrow$ ``Start coding'' $\rightarrow$ \texttt{/compiler} $\rightarrow$ pick a runtime pill $\rightarrow$ type code $\rightarrow$ press Run in the embed $\rightarrow$ read output in the result pane. Evidence: \texttt{src/app/page.tsx} hero CTAs, \texttt{CompilerView.tsx} switcher, \texttt{CodeEditor.tsx} iframe. Mermaid source: \texttt{diagrams/user-flow.mmd}.
+
+\subsection{Flow 2 --- learn a language via a guide}
+Language index (\texttt{/languages}, optional search filter) $\rightarrow$ per-language guide (\texttt{/languages/[slug]}) $\rightarrow$ copy the sample program $\rightarrow$ ``Run \{language\} now'' $\rightarrow$ \texttt{/compiler} $\rightarrow$ paste, fill stdin if needed, Run. Evidence: \texttt{LanguageExplorer.tsx}, \texttt{SAMPLES} and steps in the slug template.
+
+\subsection{Flow 3 --- teacher assigns, student submits by link}
+Teacher opens \texttt{/use-cases/teachers} $\rightarrow$ shares one starter compiler link $\rightarrow$ students edit and re-share their run URLs $\rightarrow$ teacher opens each link to review exact code and inputs. Evidence: use-case page steps; sharing mechanics in \texttt{/docs} and \texttt{/blog/share-code-run-link}.
+
+\subsection{Flow 4 --- answer-seeking and support}
+Docs FAQ, blog guides, and comparison pages cross-link each other and end in compiler CTAs; unresolved questions land on \texttt{/contact}, which routes to docs/compiler/about rather than a form (no support desk exists). Evidence: \texttt{docs/page.tsx} further-reading block, \texttt{contact/page.tsx}.
+
+\begin{lstlisting}[language=bash,caption={User flows (text diagram; Mermaid source in diagrams/user-flow.mmd)}]
+Visitor -> / -> /compiler -> pick runtime -> type -> Run (embed) -> output
+Learner -> /languages -> /languages/[slug] -> copy sample -> /compiler -> Run
+Teacher -> use-cases/teachers -> share starter link -> students re-share URLs
+Reader -> docs/blog/compare -> related links -> compiler CTA or /contact
+\end{lstlisting}

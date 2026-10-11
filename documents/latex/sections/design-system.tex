@@ -1,7 +1,7 @@
 \section{Design System}
 \label{sec:design-system}
 
-\textbf{Status:} IMPLEMENTED (values extracted verbatim from code; no Figma or token file exists).
+\textbf{Status:} IMPLEMENTED. Tokens are defined in \texttt{DESIGN.md} (Sanity-inspired) and implemented as Tailwind v4 \texttt{@theme} tokens in \texttt{src/app/globals.css}. Values below verified against both files on 2026-10-11.
 
 \begin{table}[H]
 \centering
@@ -9,15 +9,14 @@
 \begin{tabular}{|l|p{8.5cm}|}
 \hline
 \textbf{Token} & \textbf{Value and location} \\ \hline
-Page background & \texttt{\#070b12} in \texttt{page.tsx} (prototype used the same base plus indigo/cyan radial gradients) \\ \hline
-Editor surface & \texttt{\#0f172a} header (85\% opacity) and iframe surround in \texttt{CodeEditor.tsx} \\ \hline
-Borders & \texttt{white/[0.08]} hairline under header \\ \hline
-Dots & \texttt{bg-slate-600}, 10px circles; status dot \texttt{bg-green-500} with green glow shadow \\ \hline
-Typography & Title 14px semibold slate-50; status 12px slate-400; body Geist sans via \texttt{next/font} (prototype used Inter) \\ \hline
-Header metrics & \texttt{px 18px / py 15px} desktop, \texttt{p-3} mobile; backdrop blur 14px \\ \hline
-Radius | Shadows | Motion & Full-bleed: no radius or shadow on the fitted component (prototype had 16px radius + deep shadow on its centered card) \\ \hline
-Breakpoints & Tailwind defaults; explicit adaptations at \texttt{max-sm} (640px) \\ \hline
+Canvas & \texttt{\#0b0b0b} dark sections (\texttt{bg-canvas}); \texttt{\#ffffff} light commercial sections; \texttt{\#ededed} paper bands \\ \hline
+Accent & Coral-red \texttt{\#f36458} (\texttt{bg-brand}), reserved for one primary action per viewport + brand dot beside the wordmark \\ \hline
+Text & White on dark; ink \texttt{\#0b0b0b} on light; ash \texttt{\#b9b9b9} body copy on dark; mute \texttt{\#797979} eyebrows \\ \hline
+Typography & Inter (display/body, tight negative tracking) + IBM Plex Mono (eyebrows/labels only) via \texttt{next/font}; display 112px $\rightarrow$ 38px scale \\ \hline
+Radius & Pill \texttt{99999px} marketing CTAs; 3--6px \texttt{rounded-app-*} for inputs and studio windows; 12px \texttt{rounded-marketing} cards \\ \hline
+Icons & \texttt{lucide-react} only (\texttt{ArrowRight}/\texttt{ArrowDown}), \texttt{aria-hidden}, sized to surrounding text \\ \hline
+Section rhythm & 96px verticals; 1640px max container; dark/light polarity flips as dividers \\ \hline
 \end{tabular}
 \end{table}
 
-There is no button, input, card, modal, table, or icon subsystem in the app; documenting one would be fabrication. \textbf{Status:} NOT APPLICABLE beyond the window chrome above.
+Editor chrome (framed screenshots, traffic-light dots, status pill) follows the same tokens with native-app radii so embedded product UI reads as product, not marketing.

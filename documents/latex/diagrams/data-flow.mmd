@@ -1,0 +1,11 @@
+%% Build-time and runtime data movement (Mermaid source only).
+%% Bake to PNG for print builds with Mermaid CLI:
+%%   mmdc -i diagrams/data-flow.mmd -o diagrams/data-flow.png
+flowchart LR
+    Lib["src/lib/seo.ts + posts.ts"] --> Params["generateStaticParams"]
+    Params --> Pages["16 static guide pages"]
+    Lib --> Sitemap["sitemap.ts -> 33 URLs"]
+    Props["component props"] --> Builder["buildOneCompilerSrc"]
+    Builder --> Iframe["iframe src -> onecompiler.com"]
+    Browser["browser keystrokes + stdin"] --> Iframe
+    Iframe -. "no CodeLab server" .-> Void["(nothing stored)"]

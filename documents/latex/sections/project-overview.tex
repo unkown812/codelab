@@ -12,10 +12,12 @@
 \textbf{Item} & \textbf{Value} \\ \hline
 Name & CodeLab \\ \hline
 Subtitle & Online Compiler \\ \hline
-Repository layout & Root static prototype \texttt{index.html} + Next.js app in \texttt{codelab/} \\ \hline
-App package & \texttt{codelab}, version \texttt{0.1.0}, private, \texttt{codelab/package.json} \\ \hline
-Entry route & \texttt{/} from \texttt{codelab/src/app/page.tsx} \\ \hline
-Document title & ``CodeLab --- Online Compiler'' in \texttt{codelab/src/app/layout.tsx} \\ \hline
+Repository layout & Next.js App Router application at repository root \\ \hline
+App package & \texttt{codelab}, version \texttt{0.1.0}, private, ISC license, author Jay Jogane (\texttt{package.json}) \\ \hline
+Entry route & \texttt{/} from \texttt{src/app/page.tsx} \\ \hline
+Document title & ``CodeLab --- Write. Run. Ship Code.'' in \texttt{src/app/layout.tsx} \\ \hline
+Remote & \texttt{https://github.com/unkown812/codelab.git} (branch \texttt{master}) \\ \hline
+Observed deployment & Serves the application at \texttt{https://code--lab.vercel.app/} (verified live on 2026-10-11; no hosting config in repo, so operator-owned) \\ \hline
 \end{tabular}
 \end{table}
 
@@ -23,14 +25,15 @@ Document title & ``CodeLab --- Online Compiler'' in \texttt{codelab/src/app/layo
 The complete application source (excluding \texttt{node\_modules/}, \texttt{.next/}, \texttt{.git/}) is:
 
 \begin{itemize}
-\item \texttt{index.html} --- 563-line standalone prototype with inline CSS; contains navbar/hero/features styles but its \texttt{body} renders only the compiler section (lines 516--557).
-\item \texttt{codelab/src/app/layout.tsx} --- root layout, Geist fonts, metadata, full-viewport body.
-\item \texttt{codelab/src/app/page.tsx} --- home route, renders \texttt{CodeEditor} only.
-\item \texttt{codelab/src/app/globals.css} --- Tailwind import plus default template variables.
-\item \texttt{codelab/src/components/CodeEditor.tsx} --- 185-line reusable embed component plus \texttt{buildOneCompilerSrc} URL builder.
-\item \texttt{codelab/package.json}, \texttt{next.config.ts}, \texttt{tsconfig.json}, \texttt{eslint.config.mjs}, \texttt{.gitignore} --- toolchain configuration.
-\item \texttt{codelab/public/} --- default Next.js static assets (\texttt{next.svg}, \texttt{vercel.svg}, favicons); none are referenced by \texttt{page.tsx}. \textbf{Status:} IMPLEMENTED (unused assets, see Section~\ref{sec:technical-debt}).
+\item \texttt{src/app/} --- 17 static routes (\texttt{page.tsx} files), 2 dynamic routes (\texttt{languages/[slug]}, \texttt{blog/[slug]}), plus \texttt{layout.tsx}, \texttt{globals.css}, \texttt{robots.ts}, \texttt{sitemap.ts}, \texttt{manifest.ts}, \texttt{not-found.tsx}.
+\item \texttt{src/components/} --- \texttt{Navbar}, \texttt{Footer}, \texttt{CodeEditor} (+ \texttt{buildOneCompilerSrc}), \texttt{CompilerView} (client island), \texttt{LanguageExplorer} (client island), \texttt{Breadcrumbs}, \texttt{JsonLd}.
+\item \texttt{src/lib/} --- \texttt{seo.ts} (canonical site config, 12-language metadata), \texttt{posts.ts} (4 blog posts).
+\item \texttt{public/} --- \texttt{favicon.png} (261x261), \texttt{favicon.ico} only.
+\item Root config --- \texttt{package.json}, \texttt{package-lock.json} (npm), \texttt{next.config.ts}, \texttt{tsconfig.json}, \texttt{eslint.config.mjs}, \texttt{.gitignore}, \texttt{.editorconfig}, \texttt{LICENSE} (ISC, Jay Jogane).
+\item Root docs --- \texttt{README.md}, \texttt{AGENTS.md}, \texttt{CONTRIBUTING.md}, \texttt{SECURITY.md}, \texttt{DESIGN.md}.
+\item \texttt{.github/} --- CI workflow, PR template, issue templates, Dependabot config.
+\item \texttt{documents/} --- this LaTeX suite (print-oriented; \texttt{src/} is the source of truth).
 \end{itemize}
 
 \subsection{Explicit non-goals (not in repository)}
-No backend, database, migrations, API endpoints, authentication, authorization, middleware, background jobs, webhooks, storage, analytics, tests, or deployment manifests exist. These areas are documented as NOT APPLICABLE in their respective sections rather than omitted silently.
+No backend, database, migrations, API endpoints, authentication, authorization, middleware, background jobs, webhooks, storage, analytics, tests, environment files, or Docker images exist. These areas are documented as NOT APPLICABLE in their respective sections rather than omitted silently.

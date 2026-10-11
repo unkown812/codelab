@@ -7,12 +7,19 @@
 \begin{tabular}{|l|p{9.5cm}|}
 \hline
 \textbf{Term} & \textbf{Meaning} \\ \hline
-CodeLab & This project: a full-viewport front end for an embedded online compiler. \\ \hline
+CodeLab & This project: a free online compiler with guides, built as a static Next.js site. \\ \hline
+BRD & Business Requirements Document (\texttt{brd.tex}); evidence-only, metrics marked UNKNOWN. \\ \hline
+User flow & A verified visitor journey (run, learn, assign, support) in \texttt{user-flows.tex}. \\ \hline
+Data flow & Build-time and runtime data movement; nothing is stored (\texttt{data-flows.tex}). \\ \hline
 OneCompiler embed & Third-party editor/runner loaded in \texttt{iframe\#onecompiler} from \texttt{onecompiler.com}. \\ \hline
 \texttt{buildOneCompilerSrc} & Helper in \texttt{CodeEditor.tsx} mapping props to an embed URL. \\ \hline
-App Router & Next.js routing model used here (\texttt{src/app/layout.tsx}, \texttt{src/app/page.tsx}). \\ \hline
-Static prerender & Build-time HTML generation; \texttt{/} is served as static content. \\ \hline
-\texttt{h-dvh} & CSS dynamic viewport height unit used for the full-bleed layout. \\ \hline
+App Router & Next.js routing model used here (\texttt{src/app/} routes, layouts, metadata). \\ \hline
+Static prerender & Build-time HTML generation; all 33 indexable URLs prerender. \\ \hline
+\texttt{generateStaticParams} & Next.js function pre-rendering dynamic segments from \texttt{src/lib/} datasets. \\ \hline
+JSON-LD & Structured-data format used for WebSite, FAQPage, HowTo, BlogPosting, and breadcrumb schemas. \\ \hline
+Canonical URL & The single authoritative URL declared per route via \texttt{alternates.canonical}. \\ \hline
+AEO / GEO & Answer-engine / generative-engine optimization: crawlable answers and typed entities for AI search. \\ \hline
+Client island & The only client-rendered components (\texttt{CompilerView}, \texttt{LanguageExplorer}); everything else is server-rendered. \\ \hline
 NOT APPLICABLE & Classification meaning the area does not exist in this repository. \\ \hline
 INFERRED & Classification meaning a reasonable interpretation of the code, not a repo-stated fact. \\ \hline
 RECOMMENDED & Classification meaning a suggested improvement, not implemented functionality. \\ \hline

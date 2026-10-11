@@ -1,0 +1,32 @@
+\section{Business Requirements Document (BRD)}
+\label{sec:brd}
+
+\textbf{Status:} INFERRED from repository content (no BRD, tracker, or business metrics exist in the repo). Business facts below trace to implemented pages; anything measurable is marked UNKNOWN, never invented.
+
+\subsection{Business problem}
+Learners, teachers, and interview candidates need a zero-install way to run code and get answers, while project owners need a low-cost surface that attracts and helps those users. \textbf{Status:} INFERRED from the product shape (free playground + guides + use-case pages).
+
+\subsection{Business objectives (as evidenced)}
+\begin{enumerate}
+\item Offer a free, no-signup compiler playground (\texttt{/compiler}). \textbf{Status:} IMPLEMENTED.
+\item Answer follow-up questions in owned content (language guides, stdin/sharing tutorials, FAQs) instead of losing users to external forums. \textbf{Status:} IMPLEMENTED (\texttt{/languages}, \texttt{/blog}, \texttt{/docs}).
+\item Address three audiences explicitly (students, teachers, interview prep). \textbf{Status:} IMPLEMENTED (\texttt{/use-cases/*}).
+\item Present tiered plans (Playground / Pro / Classroom on \texttt{/pricing}). \textbf{Status:} IMPLEMENTED as presentational content only --- no checkout, billing, or entitlement logic exists in the repository, so no revenue behavior is claimed.
+\end{enumerate}
+
+\subsection{Stakeholders and user groups}
+\begin{table}[H]
+\centering
+\caption{Stakeholders (evidence-based)}
+\begin{tabular}{|l|p{8.5cm}|}
+\hline
+\textbf{Stakeholder} & \textbf{Evidence} \\ \hline
+Creator/owner & Jay Jogane (\texttt{LICENSE}, \texttt{package.json} author) \\ \hline
+Learners, teachers, candidates & Dedicated \texttt{/use-cases/*} pages and guide content \\ \hline
+Hosting/runtime vendors & Vercel (observed host), OneCompiler (embed provider) --- third parties, not stakeholders of record \\ \hline
+Paying customers, partners & UNKNOWN --- none evidenced in the repo; pricing tiers are content, not contracts \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Success metrics, constraints, risks}
+Success metrics: UNKNOWN --- no analytics, targets, or KPIs exist in the repo (suggested starting points, RECOMMENDED: playground runs per week, guide-to-compiler conversion, all measurable only after adding privacy-respecting analytics). Constraints: zero-backend architecture (no accounts, no payments, no persistence); ISC open-source license; total dependence on the OneCompiler runtime. Risks: embed provider changes break the core value without a CodeLab code change; pricing content promises tiers the codebase cannot enforce. See Sections~\ref{sec:roadmap} and~\ref{sec:known-issues}.

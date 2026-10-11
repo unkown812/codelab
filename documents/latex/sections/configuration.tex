@@ -9,10 +9,13 @@
 \begin{tabular}{|l|p{8.5cm}|}
 \hline
 \textbf{File} & \textbf{Role} \\ \hline
-\texttt{codelab/next.config.ts} & Enables \texttt{cacheComponents} and partial prefetching; Turbopack rule routing \texttt{*.css} through \texttt{@tailwindcss/turbopack} \\ \hline
-\texttt{codelab/tsconfig.json} & Strict TS, \texttt{ES2017} target, bundler resolution, \texttt{@/*} $\rightarrow$ \texttt{./src/*} alias (used by \texttt{page.tsx} import) \\ \hline
-\texttt{codelab/eslint.config.mjs} & Flat config extending \texttt{core-web-vitals} + TypeScript presets; ignores build outputs \\ \hline
-\texttt{codelab/.gitignore} & Ignores \texttt{node\_modules}, \texttt{.next}, \texttt{out}, \texttt{build}, \texttt{.env*}, Vercel metadata \\ \hline
+\texttt{next.config.ts} & Enables \texttt{cacheComponents} and partial prefetching; Turbopack rule routing \texttt{*.css} through \texttt{@tailwindcss/turbopack} \\ \hline
+\texttt{tsconfig.json} & Strict TS, \texttt{ES2017} target, bundler resolution, \texttt{@/*} $\rightarrow$ \texttt{./src/*} alias \\ \hline
+\texttt{eslint.config.mjs} & Flat config extending \texttt{core-web-vitals} + TypeScript presets; ignores build outputs \\ \hline
+\texttt{.gitignore} & Ignores \texttt{node\_modules}, \texttt{.next}, \texttt{out}, \texttt{build}, \texttt{.env*}, Vercel metadata, \texttt{*.tsbuildinfo} \\ \hline
+\texttt{.editorconfig} & LF endings, UTF-8, 2-space indent, final newline \\ \hline
+\texttt{package.json} & Scripts \texttt{dev/build/start/lint}; \texttt{license} ISC + \texttt{author} Jay Jogane matching \texttt{LICENSE} \\ \hline
+\texttt{.github/workflows/ci.yml} & CI: \texttt{npm ci} $\rightarrow$ lint $\rightarrow$ build on Node 22 (see Section~\ref{sec:cicd}) \\ \hline
 \end{tabular}
 \end{table}
 

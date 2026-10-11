@@ -4,24 +4,26 @@
 \textbf{Status:} IMPLEMENTED. This section merges system architecture, high-level design, and low-level design because the system is small enough that separate documents would repeat each other.
 
 \subsection{System context}
-The deployed unit is a static Next.js route served to a browser; the browser then loads the OneCompiler application in an iframe. CodeLab executes no user code itself.
+The deployed unit is a set of static Next.js routes served to a browser; the browser then loads the OneCompiler application in an iframe on the playground routes. CodeLab executes no user code itself.
 
 \begin{lstlisting}[language=bash,caption={System context (text diagram; Mermaid source in diagrams/system-context.mmd)}]
-Browser -> Next.js static route "/" (layout + page + CodeEditor chrome)
+Browser -> Next.js static routes (layout + pages + CodeEditor chrome)
 Browser -> https://onecompiler.com/embed... (iframe, editor + runner)
 CodeLab server -x- user code (never touches it)
 \end{lstlisting}
 
 \subsection{High-level design}
 \begin{enumerate}
-\item \textbf{Route layer:} \texttt{src/app/layout.tsx} (html/body shell, fonts, metadata) composes \texttt{src/app/page.tsx} (route \texttt{/}).
-\item \textbf{Component layer:} \texttt{page.tsx} renders one \texttt{CodeEditor} with default props.
+\item \textbf{Route layer:} \texttt{src/app/layout.tsx} (html/body shell, fonts, metadata, navbar/footer) composes 17 static routes and 2 dynamic route segments.
+\item \textbf{Component layer:} server-rendered pages; exactly two client islands (\texttt{CompilerView}, \texttt{LanguageExplorer}) own the only \texttt{useState} in the app.
+\item \textbf{Content-data layer:} \texttt{src/lib/seo.ts} (site config, 12-language metadata) and \texttt{src/lib/posts.ts} (4 blog posts) feed the programmatic routes.
 \item \textbf{URL-builder layer:} \texttt{buildOneCompilerSrc} maps typed props to an embed path plus query string; \texttt{src} bypasses it.
-\item \textbf{Presentation layer:} Tailwind utility classes implement the dark full-viewport window; \texttt{globals.css} contributes only the Tailwind import and unused template variables.
+\item \textbf{SEO layer:} per-route metadata, \texttt{JsonLd} structured data, \texttt{Breadcrumbs}, \texttt{sitemap.ts}, \texttt{robots.ts}, \texttt{manifest.ts}.
+\item \textbf{Presentation layer:} Tailwind utilities over \texttt{@theme} design tokens in \texttt{globals.css}; \texttt{lucide-react} icons.
 \end{enumerate}
 
 \subsection{Low-level design}
-\texttt{CodeEditor} is a React Server Component (no \texttt{"use client"} directive) with no hooks, context, or event listeners. Data flow is one-way: props $\rightarrow$ \texttt{iframeSrc} string $\rightarrow$ \texttt{iframe src} attribute. \texttt{clampFontSize} enforces the documented 8--32 range. \texttt{language}/\texttt{codeId} are sanitized by stripping \texttt{/} characters before interpolation. There are no classes, stores, or services.
+\texttt{CodeEditor} is a React Server Component (no \texttt{"use client"} directive) with no hooks, context, or event listeners. Data flow is one-way: props $\rightarrow$ \texttt{iframeSrc} string $\rightarrow$ \texttt{iframe src} attribute. \texttt{clampFontSize} enforces the documented 8--32 range. \texttt{language}/\texttt{codeId} are sanitized by stripping \texttt{/} characters before interpolation. Dynamic routes use Next.js 16 async \texttt{params} with \texttt{generateStaticParams} over the \texttt{lib} datasets, so all 33 indexable URLs prerender at build time. There are no classes, stores, or services.
 
 \subsection{Backend, database, and API}
 \textbf{Status:} NOT APPLICABLE. No server components fetch data, no route handlers exist, and no schema or migration files are present. Any future backend must be documented separately; this suite does not invent one.

@@ -1,0 +1,10 @@
+\section{AEO (Answer Engine Optimization)}
+\label{sec:aeo}
+
+\textbf{Status:} IMPLEMENTED (verified in code on 2026-10-11).
+
+\subsection{Answer-first content}
+Key facts (what CodeLab is, who it is for, whether it is free) exist as plain crawlable HTML, never hidden exclusively behind JavaScript interactions: the home page carries a ``What is CodeLab? / Who is it for? / Is it free?'' answer block; every language guide and blog post repeats its FAQs in server-rendered \texttt{details/summary} elements paired with \texttt{FAQPage} JSON-LD; procedural pages pair visible steps with \texttt{HowTo} JSON-LD (\texttt{/compiler}, \texttt{/docs}, language guides).
+
+\subsection{Question coverage}
+The content answers, verbatim in text: what the product is, what it does, who it is for, what problem it solves, how to use it (3-step HowTos), whether it is free (pricing + answers), which languages/versions are pinned, who created it (\texttt{/about}), and where to get help (\texttt{/contact}). \textbf{Status:} IMPLEMENTED. Marketing language is kept out of answer blocks; limitations (no backend, no accounts) are stated plainly so answer engines quote accurate constraints.

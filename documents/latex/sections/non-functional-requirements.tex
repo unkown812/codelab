@@ -7,12 +7,12 @@
 \begin{tabular}{|l|p{5cm}|p{6.5cm}|}
 \hline
 \textbf{Category} & \textbf{Statement} & \textbf{Status and evidence} \\ \hline
-Responsiveness & No gaps between component and viewport; usable at mobile widths & IMPLEMENTED: \texttt{h-dvh}, \texttt{flex-1 min-h-0}, reduced mobile header padding \\ \hline
-Performance & First paint should be dominated by framework + one iframe & INFERRED: static route, \texttt{loading="lazy"} on iframe; no measurements in repo \\ \hline
-Accessibility & Title and landmark labeling for the editor region & PARTIAL: \texttt{section aria-label}, iframe \texttt{title="Online Code Compiler"}; no keyboard/focus management of remote content possible \\ \hline
+Responsiveness & Usable from 360px phones to widescreen; grids collapse, type steps down & IMPLEMENTED: collapsing grids, mobile menu, \texttt{next/image} dimensions \\ \hline
+Performance & First paint dominated by framework + one iframe & INFERRED: 33 static/prerendered URLs, \texttt{loading="lazy"} on iframe, two tiny client islands; no measurements in repo \\ \hline
+Accessibility & Labelled landmarks, skip link, visible focus, keyboard-native controls & PARTIAL: implemented as listed; remote iframe content and smallest muted labels excepted \\ \hline
 Compatibility & Modern browsers with iframe + clipboard permissions & IMPLEMENTED: standard iframe attributes; no polyfills in repo \\ \hline
 Security & No CodeLab-side secret handling or code execution & IMPLEMENTED: no secrets, no API routes; residual iframe risks in Section~\ref{sec:security} \\ \hline
-Maintainability & Single reusable component with typed props & IMPLEMENTED: \texttt{CodeEditor.tsx} + \texttt{buildOneCompilerSrc} \\ \hline
-Availability & Page frame renders even if embed is unreachable & INFERRED: no error boundary exists; frame renders, iframe area stays empty (RECOMMENDED improvement) \\ \hline
+Maintainability & Typed props, tokenized styling, content data in \texttt{lib} & IMPLEMENTED: \texttt{CodeEditor.tsx} + \texttt{buildOneCompilerSrc}; \texttt{seo.ts}/\texttt{posts.ts} datasets \\ \hline
+Availability & Page frames render even if embed is unreachable & INFERRED: no error boundary exists; frame renders, iframe area stays empty (RECOMMENDED improvement) \\ \hline
 \end{tabular}
 \end{table}

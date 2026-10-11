@@ -1,7 +1,7 @@
 \section{Known Issues}
 \label{sec:known-issues}
 
-\textbf{Status:} IMPLEMENTED observations (verified in code on 2026-10-10).
+\textbf{Status:} IMPLEMENTED observations (re-verified in code on 2026-10-11). Items fixed since v1.0 are marked FIXED, not deleted, so the history stays auditable.
 
 \begin{table}[H]
 \centering
@@ -11,8 +11,10 @@
 \textbf{Issue} & \textbf{Severity} & \textbf{Location, impact, recommendation} \\ \hline
 Helper/component default mismatch & Medium & \texttt{CodeEditor.tsx}: \texttt{buildOneCompilerSrc} defaults \texttt{availableLanguages=true}, \texttt{listenToEvents=true}; the component defaults both to \texttt{false}. Impact: documentation examples calling the helper directly produce a different URL than a default render. Recommendation: align the defaults and add unit tests. \\ \hline
 Static status text & Low & \texttt{statusText="Ready to compile"} never changes. Impact: implies liveness the page does not have. Recommendation: drive from embed events or relabel as static chrome. \\ \hline
-Misplaced \texttt{<link>} in layout & Low & \texttt{layout.tsx} renders \texttt{<link rel="shortcut icon">} inside the component body rather than via metadata only. Impact: works but is non-idiomatic and duplicates \texttt{icons.icon}. Recommendation: remove the manual tag. \\ \hline
-Unused template styling/assets & Low & \texttt{globals.css} light/dark template variables and \texttt{public/*.svg} are unreferenced. Impact: dead weight, minor confusion. Recommendation: prune or adopt. \\ \hline
 No embed fallback & Medium & No error UI when \texttt{onecompiler.com} is unreachable. Impact: blank editor area. Recommendation: detect iframe failure and show guidance. \\ \hline
+Muted mono contrast & Low & Eyebrow labels in \texttt{\#797979} on \texttt{\#0b0b0b} sit below WCAG AA for small text. Impact: hardest-to-read labels are the smallest. Recommendation: lighten token or restrict mute to large/bold use. \\ \hline
+Manual favicon \texttt{<link>} & Low & FIXED 2026-10-11: layout uses \texttt{metadata.icons} only. \\ \hline
+Unused template styling/assets & Low & FIXED 2026-10-11: \texttt{globals.css} is token-only; \texttt{public/} holds favicons only. \\ \hline
+OG/manifest icon dimensions & Low & FIXED 2026-10-11: metadata declared 512px but \texttt{favicon.png} is 261x261; declarations corrected to actual dimensions. \\ \hline
 \end{tabular}
 \end{table}

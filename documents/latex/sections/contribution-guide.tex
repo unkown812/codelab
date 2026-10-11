@@ -1,0 +1,10 @@
+\section{Contribution Guide}
+\label{sec:contribution-guide}
+
+\textbf{Status:} IMPLEMENTED (summarizes \texttt{CONTRIBUTING.md}, \texttt{AGENTS.md}, and \texttt{.github/} templates; consult those files for the normative text).
+
+\subsection{Workflow}
+Setup is \texttt{npm install} + \texttt{npm run dev}; no services or environment files. Changes must keep \texttt{npm run lint} (zero warnings), \texttt{npx tsc --noEmit}, and \texttt{npm run build} green. One concern per pull request; the PR template requires the verification checklist plus a sitemap entry for any new indexable route.
+
+\subsection{Conventions for contributors}
+Follow \texttt{DESIGN.md} tokens and \texttt{lucide-react} icons; keep pages server-rendered with \texttt{metadata}; add content data to \texttt{src/lib/} rather than ad-hoc JSX; never invent stats, customers, or offers. \texttt{LICENSE} (ISC, Jay Jogane) terms must not change; never force-push or rewrite history. Security reports go through private GitHub Security Advisories per \texttt{SECURITY.md}.

@@ -1,0 +1,10 @@
+\section{CI/CD}
+\label{sec:cicd}
+
+\textbf{Status:} IMPLEMENTED (workflow file present; run history not verifiable from the repo).
+
+\subsection{Continuous integration}
+\texttt{.github/workflows/ci.yml} runs on pushes to \texttt{master} and all pull requests: checkout, Node 22 setup with npm cache, \texttt{npm ci}, \texttt{npm run lint}, \texttt{npm run build} (which includes the TypeScript check). Permissions are minimal (\texttt{contents: read}). There is no test job because no test suite exists (see Section~\ref{sec:testing}).
+
+\subsection{Supporting automation}
+\texttt{.github/dependabot.yml} schedules weekly npm updates grouped for Next.js and React. PR and issue templates (\texttt{.github/PULL\_REQUEST\_TEMPLATE.md}, \texttt{ISSUE\_TEMPLATE/}) enforce the lint/typecheck/build checklist. \textbf{Status:} IMPLEMENTED. No deployment workflow exists; hosting remains operator-owned (see Section~\ref{sec:deployment}). \textbf{Status:} NOT APPLICABLE.
