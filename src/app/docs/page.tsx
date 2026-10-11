@@ -1,9 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Docs — CodeLab",
-  description: "Quickstart, sharing, stdin and classroom guides for the CodeLab compiler.",
+  title: "Docs",
+  description:
+    "CodeLab docs: 10-second quickstart, stdin and sharing guide, run limits and answers for students, teachers and interview prep.",
+  alternates: { canonical: "/docs" },
+  openGraph: {
+    title: "Docs — CodeLab",
+    description:
+      "Quickstart, sharing, stdin and classroom guides for the CodeLab compiler.",
+    url: "/docs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Docs — CodeLab",
+    description:
+      "Quickstart, sharing, stdin and classroom guides for the CodeLab compiler.",
+  },
 };
 
 const STEPS = [
@@ -46,8 +63,39 @@ const FAQS = [
 export default function DocsPage() {
   return (
     <main className="w-full bg-canvas px-6 py-16 md:py-24">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQS.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "How to run code on CodeLab",
+            description:
+              "Run any supported language on CodeLab in three steps.",
+            step: STEPS.map((s) => ({
+              "@type": "HowToStep",
+              name: s.title,
+              text: s.body,
+            })),
+          },
+        ]}
+      />
       <div className="mx-auto w-full max-w-[1640px]">
-        <p className="font-mono text-[13px] tracking-[0.08em] text-mute uppercase">
+        <Breadcrumbs
+          trail={[
+            { label: "Home", href: "/" },
+            { label: "Docs", href: "/docs" },
+          ]}
+        />
+        <p className="mt-8 font-mono text-[13px] tracking-[0.08em] text-mute uppercase">
           [ DOCS ]
         </p>
         <h1 className="display-brand mt-4 max-w-[16ch] text-[48px] leading-[1.05] font-normal tracking-[-1.68px] text-white sm:text-[72px] sm:tracking-[-2.88px]">
@@ -109,6 +157,22 @@ export default function DocsPage() {
             </div>
           </div>
         </div>
+
+        <section aria-label="Further reading" className="mt-12 rounded-marketing border border-hairline-soft bg-canvas-soft/60 p-8">
+          <h2 className="display-brand text-[24px] text-white">Further reading</h2>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            {[
+              { label: "How to run Python online without installing anything", href: "/blog/run-python-online-no-install" },
+              { label: "Stdin in an online compiler: how piped input works", href: "/blog/stdin-guide-online-compiler" },
+              { label: "Run Python online guide", href: "/languages/python" },
+              { label: "Online compiler vs local IDE", href: "/compare/online-compiler-vs-local-ide" },
+            ].map((l) => (
+              <Link key={l.href} href={l.href} className="text-[15px] text-ash underline decoration-mute underline-offset-4 transition hover:text-white">
+                {l.label} →
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
     </main>
   );

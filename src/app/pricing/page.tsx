@@ -1,9 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Pricing — CodeLab",
-  description: "Free to start. Fair when you grow. Playground, Pro and Classroom plans.",
+  title: "Pricing",
+  description:
+    "CodeLab pricing: free Playground with 80+ runtimes, Pro for builders and Classroom for teachers and teams. No credit card to try.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "Pricing — CodeLab",
+    description:
+      "Free to start. Fair when you grow. Playground, Pro and Classroom plans.",
+    url: "/pricing",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Pricing — CodeLab",
+    description:
+      "Free to start. Fair when you grow. Playground, Pro and Classroom plans.",
+  },
 };
 
 const TIERS = [
@@ -39,8 +57,25 @@ const TIERS = [
 export default function PricingPage() {
   return (
     <main className="w-full bg-canvas-light px-6 py-16 text-ink md:py-24">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Pricing — CodeLab",
+          description:
+            "CodeLab plans: free Playground, Pro and Classroom.",
+          url: `${SITE_URL}/pricing`,
+          isPartOf: { "@type": "WebSite", name: "CodeLab", url: SITE_URL },
+        }}
+      />
       <div className="mx-auto w-full max-w-[1640px]">
-        <p className="font-mono text-[13px] tracking-[0.08em] text-slate-soft uppercase">
+        <Breadcrumbs
+          trail={[
+            { label: "Home", href: "/" },
+            { label: "Pricing", href: "/pricing" },
+          ]}
+        />
+        <p className="mt-8 font-mono text-[13px] tracking-[0.08em] text-slate-soft uppercase">
           [ PRICING ]
         </p>
         <h1 className="display-brand mt-4 max-w-[16ch] text-[48px] leading-[1.05] font-normal tracking-[-1.68px] sm:text-[72px] sm:tracking-[-2.88px]">

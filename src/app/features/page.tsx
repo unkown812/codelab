@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Features — CodeLab",
+  title: "Features",
   description:
-    "Instant runtimes, 80+ languages, shareable runs and classroom-ready workflows.",
+    "CodeLab features: instant in-browser runtimes, 80+ languages, shareable run links and classroom-ready workflows. Free, no setup.",
+  alternates: { canonical: "/features" },
+  openGraph: {
+    title: "Features — CodeLab",
+    description:
+      "Instant runtimes, 80+ languages, shareable runs and classroom-ready workflows.",
+    url: "/features",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Features — CodeLab",
+    description:
+      "Instant runtimes, 80+ languages, shareable runs and classroom-ready workflows.",
+  },
 };
 
 const CARDS = [
@@ -43,8 +60,25 @@ const CARDS = [
 export default function FeaturesPage() {
   return (
     <main className="w-full bg-canvas px-6 py-16 md:py-24">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Features — CodeLab",
+          description:
+            "CodeLab features: instant in-browser runtimes, 80+ languages and shareable run links.",
+          url: `${SITE_URL}/features`,
+          isPartOf: { "@type": "WebSite", name: "CodeLab", url: SITE_URL },
+        }}
+      />
       <div className="mx-auto w-full max-w-[1640px]">
-        <p className="font-mono text-[13px] tracking-[0.08em] text-mute uppercase">
+        <Breadcrumbs
+          trail={[
+            { label: "Home", href: "/" },
+            { label: "Features", href: "/features" },
+          ]}
+        />
+        <p className="mt-8 font-mono text-[13px] tracking-[0.08em] text-mute uppercase">
           [ FEATURES ]
         </p>
         <h1 className="display-brand mt-4 max-w-[18ch] text-[48px] leading-[1.05] font-normal tracking-[-1.68px] text-white sm:text-[72px] sm:tracking-[-2.88px]">

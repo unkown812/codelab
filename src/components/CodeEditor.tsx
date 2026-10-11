@@ -147,7 +147,7 @@ export default function CodeEditor({
     <section
       id={id}
       aria-label={title}
-      className={`m-0 flex h-dvh w-full flex-col p-0 ${className}`}
+      className={`m-0 flex h-full min-h-0 w-full flex-col p-0 ${className}`}
     >
       {/* Window header bar */}
       <div className="flex shrink-0 items-center justify-between rounded-none border-x-0 border-t-0 border-b border-white/[0.08] bg-[#0f172a]/85 px-[18px] py-[15px] backdrop-blur-[14px] max-sm:p-3">

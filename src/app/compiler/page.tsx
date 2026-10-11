@@ -1,18 +1,80 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useState } from "react";
-import CodeEditor from "@/components/CodeEditor";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import CompilerView from "@/components/CompilerView";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
-const QUICK = ["python", "javascript", "typescript", "java", "c", "cpp", "go", "rust"];
+export const metadata: Metadata = {
+  title: "Compiler",
+  description:
+    "The CodeLab playground: write, compile and run Python, JavaScript, Java, C++, Go, Rust and 70+ more languages free in your browser.",
+  alternates: { canonical: "/compiler" },
+  openGraph: {
+    title: "Compiler — CodeLab",
+    description:
+      "Write, compile and run 80+ languages free in your browser. No setup, no account.",
+    url: "/compiler",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Compiler — CodeLab",
+    description:
+      "Write, compile and run 80+ languages free in your browser. No setup, no account.",
+  },
+};
 
 export default function CompilerPage() {
-  const [language, setLanguage] = useState("python");
-
   return (
     <main className="w-full bg-canvas px-6 py-10 md:py-14">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "CodeLab Compiler",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Web browser",
+            url: `${SITE_URL}/compiler`,
+            description:
+              "Free online compiler. Write, compile and run 80+ programming languages in the browser with no setup.",
+            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "How to run code in the CodeLab compiler",
+            description:
+              "Run any supported language in three steps: pick a runtime, write code, press Run.",
+            step: [
+              {
+                "@type": "HowToStep",
+                name: "Pick a runtime",
+                text: "Choose a language pill above or use the language picker inside the editor.",
+              },
+              {
+                "@type": "HowToStep",
+                name: "Write your program",
+                text: "Type code in the editor. Add stdin input if your program reads from standard input.",
+              },
+              {
+                "@type": "HowToStep",
+                name: "Press Run",
+                text: "Use the Run button in the editor. Output, errors and exit code appear in the result pane.",
+              },
+            ],
+          },
+        ]}
+      />
       <div className="mx-auto w-full max-w-[1640px]">
-        <p className="font-mono text-[13px] tracking-[0.08em] text-mute uppercase">
+        <Breadcrumbs
+          trail={[
+            { label: "Home", href: "/" },
+            { label: "Compiler", href: "/compiler" },
+          ]}
+        />
+        <p className="mt-8 font-mono text-[13px] tracking-[0.08em] text-mute uppercase">
           [ COMPILER ]
         </p>
         <div className="mt-3 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -26,60 +88,19 @@ export default function CompilerPage() {
             New here? Read the 10-second quickstart →
           </Link>
         </div>
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          {QUICK.map((l) => (
-            <button
-              key={l}
-              type="button"
-              onClick={() => setLanguage(l)}
-              className={`rounded-full px-3.5 py-1.5 font-mono text-[12px] uppercase transition ${
-                language === l
-                  ? "bg-canvas-light font-medium text-ink"
-                  : "border border-hairline-soft bg-canvas text-ash hover:text-white"
-              }`}
-            >
-              {l}
-            </button>
-          ))}
-          <Link
-            href="/languages"
-            className="rounded-full border border-dashed border-hairline-soft px-3.5 py-1.5 font-mono text-[12px] text-mute uppercase transition hover:text-white"
-          >
-            +68 more
-          </Link>
-        </div>
-
-        <div className="mt-6 overflow-hidden rounded-app-lg border border-hairline-soft bg-canvas-soft">
-          <div className="flex items-center justify-between border-b border-hairline-soft px-4 py-2.5">
-            <div className="flex items-center gap-3">
-              <div className="flex gap-1.5" aria-hidden="true">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-              </div>
-              <span className="rounded-app-sm bg-white/10 px-2.5 py-1 font-mono text-[11px] text-ash uppercase">
-                {language}
-              </span>
+        <CompilerView />
+        <section aria-label="How to use the compiler" className="mt-10 grid gap-4 md:grid-cols-3">
+          {[
+            { h: "1. Pick a runtime", p: "Use the pills above or the picker inside the editor. Code persists per language." },
+            { h: "2. Write + add input", p: "Type your program. If it reads input, fill the stdin panel before running." },
+            { h: "3. Run and share", p: "Press Run in the editor. Copy the page URL to share your exact state." },
+          ].map((s) => (
+            <div key={s.h} className="rounded-marketing border border-hairline-soft bg-canvas-soft p-5">
+              <h2 className="display-brand text-[18px] text-white">{s.h}</h2>
+              <p className="mt-2 text-[15px] leading-[1.5] text-ash">{s.p}</p>
             </div>
-            <p className="hidden font-mono text-[11px] text-mute sm:block">
-              codelab / compiler — ready
-            </p>
-          </div>
-          <div className="h-[72vh] min-h-[480px] bg-[#0f172a]">
-            <CodeEditor
-              key={language}
-              language={language}
-              title={`CodeLab — ${language}`}
-              className="h-[72vh] min-h-[480px]"
-            />
-          </div>
-        </div>
-
-        <p className="mt-4 font-mono text-[11px] text-mute">
-          TIP — stdin, args and files persist per language. Copy the page URL to
-          share this exact state.
-        </p>
+          ))}
+        </section>
       </div>
     </main>
   );

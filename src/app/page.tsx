@@ -1,5 +1,7 @@
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import CodeEditor from "@/components/CodeEditor";
+import { SITE_URL } from "@/lib/seo";
 
 const LANGUAGES = [
   "Python",
@@ -40,6 +42,36 @@ const FEATURES = [
 export default function Home() {
   return (
     <div className="flex w-full flex-col bg-canvas font-sans text-white antialiased">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "CodeLab",
+            alternateName: "CodeLab Online Compiler",
+            url: `${SITE_URL}/`,
+            description:
+              "Free online compiler. Write, compile and run 80+ programming languages in the browser.",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Jay Jogane",
+            url: `${SITE_URL}/about`,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "CodeLab",
+            applicationCategory: "DeveloperApplication",
+            operatingSystem: "Web browser",
+            url: `${SITE_URL}/`,
+            description:
+              "Free online compiler supporting Python, JavaScript, Java, C++, Go, Rust and 70+ more languages. No setup, no account.",
+            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          },
+        ]}
+      />
       {/* alert-banner */}
       <div className="flex w-full justify-center bg-surface-blue-bg px-6 py-2.5 text-center">
         <p className="text-[13px] leading-5 text-ink">
@@ -117,16 +149,62 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col gap-4 border-t border-hairline-soft/70 pt-6 md:flex-row md:items-center md:justify-between">
               <p className="font-mono text-[11px] tracking-[0.08em] text-mute uppercase">
-                Loved in classrooms, bootcamps & interviews
+                Built for classrooms, bootcamps & interviews
               </p>
               <div className="flex flex-wrap gap-x-8 gap-y-2 text-[15px] text-ash">
-                <span>StudyHub</span>
-                <span>InterviewPrep</span>
-                <span>CS-101</span>
-                <span>HackNight</span>
-                <span>DevClubs</span>
+                <span>Students</span>
+                <span>Teachers</span>
+                <span>Interview prep</span>
+                <span>Study groups</span>
+                <span>Dev teams</span>
               </div>
             </div>
+
+            {/* AEO answer block — crawlable facts, not hidden behind JS */}
+            <section
+              aria-label="What is CodeLab"
+              className="mt-10 grid gap-4 rounded-marketing border border-hairline-soft bg-canvas-soft/60 p-8 md:grid-cols-3"
+            >
+              <div>
+                <h2 className="display-brand text-[20px] text-white">
+                  What is CodeLab?
+                </h2>
+                <p className="mt-2 text-[15px] leading-[1.5] text-ash">
+                  CodeLab is a free online compiler. It is a static web page
+                  that embeds a full code editor and runtime for 80+
+                  languages — you write code and run it without installing
+                  anything.
+                </p>
+              </div>
+              <div>
+                <h2 className="display-brand text-[20px] text-white">
+                  Who is it for?
+                </h2>
+                <p className="mt-2 text-[15px] leading-[1.5] text-ash">
+                  Students learning their first language, candidates
+                  practicing interviews, teachers running live demos, and
+                  teams sharing quick reproductions. See{" "}
+                  <Link href="/use-cases" className="underline hover:text-white">
+                    use cases
+                  </Link>
+                  .
+                </p>
+              </div>
+              <div>
+                <h2 className="display-brand text-[20px] text-white">
+                  Is it free?
+                </h2>
+                <p className="mt-2 text-[15px] leading-[1.5] text-ash">
+                  Yes — the Playground is free with no account. Optional Pro
+                  and Classroom plans add privacy, larger limits and teaching
+                  tools. See{" "}
+                  <Link href="/pricing" className="underline hover:text-white">
+                    pricing
+                  </Link>
+                  .
+                </p>
+              </div>
+            </section>
           </div>
         </section>
 
@@ -290,6 +368,26 @@ export default function Home() {
                 className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
               >
                 Read the docs →
+              </Link>
+              <Link
+                href="/blog"
+                className="inline-flex h-11 items-center rounded-full px-5 text-[13px] font-medium text-ash transition hover:text-white"
+              >
+                Guides →
+              </Link>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-mute">
+              <Link href="/use-cases/students" className="transition hover:text-white">
+                For students
+              </Link>
+              <Link href="/use-cases/teachers" className="transition hover:text-white">
+                For teachers
+              </Link>
+              <Link href="/use-cases/interviews" className="transition hover:text-white">
+                For interview prep
+              </Link>
+              <Link href="/about" className="transition hover:text-white">
+                About CodeLab
               </Link>
             </div>
           </div>

@@ -14,19 +14,19 @@ const COLS: { h: string; links: { label: string; href: string }[] }[] = [
   {
     h: "SOLUTIONS",
     links: [
-      { label: "Students", href: "/features" },
-      { label: "Teachers", href: "/pricing" },
-      { label: "Interviews", href: "/features" },
-      { label: "Teams", href: "/pricing" },
+      { label: "Students", href: "/use-cases/students" },
+      { label: "Teachers", href: "/use-cases/teachers" },
+      { label: "Interviews", href: "/use-cases/interviews" },
+      { label: "All use cases", href: "/use-cases" },
     ],
   },
   {
     h: "RESOURCES",
     links: [
       { label: "Docs", href: "/docs" },
+      { label: "Blog", href: "/blog" },
       { label: "Compiler", href: "/compiler" },
-      { label: "Samples", href: "/languages" },
-      { label: "Home", href: "/" },
+      { label: "About", href: "/about" },
     ],
   },
   {
@@ -50,7 +50,7 @@ const COLS: { h: string; links: { label: string; href: string }[] }[] = [
   {
     h: "COMPARE",
     links: [
-      { label: "All languages", href: "/languages" },
+      { label: "Online vs local IDE", href: "/compare/online-compiler-vs-local-ide" },
       { label: "Pro vs Free", href: "/pricing" },
       { label: "FAQ", href: "/docs" },
       { label: "Start coding", href: "/compiler" },

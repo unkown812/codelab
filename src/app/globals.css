@@ -73,3 +73,19 @@ body {
   background: #f36458;
   color: #0b0b0b;
 }
+
+/* Visible keyboard focus for links, buttons, inputs and disclosures */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #55beff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
